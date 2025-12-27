@@ -12,22 +12,16 @@ spec:
           - path: k8s/argocd/resources/*
   template:
     metadata:
-      name: '{{path.basename}}'
+      name: '{{.nameNormalized}}'
     spec:
       project: system
-      sources:
-        - repoURL: https://github.com/oprimogus/flyfood-gitops.git
-          targetRevision: main
-          ref: values
-        - repoURL: https://oprimogus.github.io/helm-charts
-          chart: generic-application
-          targetRevision: 0.1.0
-          helm:
-            valueFiles:
-              - $values/k8s/apps/{{path.basename}}/dev-values.yaml
+      source:
+        repoURL: https://github.com/oprimogus/oprimoguslab-gitops.git
+        targetRevision: main
+        path: '{{path}}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: dev
+        namespace: system
       syncPolicy:
         automated:
           prune: true
