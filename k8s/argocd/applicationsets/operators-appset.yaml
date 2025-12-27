@@ -15,7 +15,7 @@ spec:
       name: '{{path.basename}}'
       namespace: '{{namespace}}'
     spec:
-      project: system
+      project: operators
       source:
         repoURL: '{{repoURL}}'
         targetRevision: '{{targetRevision}}'
