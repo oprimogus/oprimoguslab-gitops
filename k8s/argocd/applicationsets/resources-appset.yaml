@@ -9,7 +9,7 @@ spec:
         repoURL: https://github.com/oprimogus/oprimoguslab-gitops.git
         revision: main
         directories:
-          - path: k8s/argocd/resources/*
+          - path: k8s/argocd/resources/*.yaml
   template:
     metadata:
       name: '{{path.basename}}'
