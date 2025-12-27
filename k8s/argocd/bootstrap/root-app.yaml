@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: 'https://github.com/oprimogus/oprimoguslab-gitops.git'
     targetRevision: main
-    path: argocd/applicationsets
+    path: k8s/argocd/applicationsets
     directory:
       recurse: true
   destination:
@@ -18,6 +18,8 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
 --- 
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -29,7 +31,7 @@ spec:
   source:
     repoURL: 'https://github.com/oprimogus/oprimoguslab-gitops.git'
     targetRevision: main
-    path: argocd/app-projects
+    path: k8s/argocd/app-projects
     directory:
       recurse: true
   destination:
@@ -39,3 +41,5 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
