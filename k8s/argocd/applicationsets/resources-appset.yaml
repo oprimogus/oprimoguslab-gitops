@@ -12,7 +12,7 @@ spec:
           - path: k8s/argocd/resources/*
   template:
     metadata:
-      name: '{{.nameNormalized}}'
+      name: '{{path.basename}}'
     spec:
       project: system
       source:
