@@ -12,7 +12,7 @@ values: |
       persistence:
         enabled: true
         type: sts
-        storageClassName: longhorn-retained
+        storageClassName: longhorn-retain
         accessModes:
           - ReadWriteOnce
         size: 20Gi
