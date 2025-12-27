@@ -11,16 +11,12 @@ spec:
     - namespace: '*'
       server: https://kubernetes.default.svc
 
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
   namespaceResourceBlacklist:
     - group: '*'
-      kind: '*'
-      namespace: argocd
-    - group: '*'
-      kind: '*'
-      namespace: system
-    - group: '*'
-      kind: '*'
-      namespace: kube-system
+      kind: 'Event'
   # roles:
   #   - name: my-role
   #     description: My role description
