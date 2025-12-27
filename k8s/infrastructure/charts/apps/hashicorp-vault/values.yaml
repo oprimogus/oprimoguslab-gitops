@@ -1,0 +1,31 @@
+name: vault
+repoURL: https://helm.releases.hashicorp.com
+targetRevision: 0.31.0
+chart: vault
+namespace: hashicorp
+values: |
+  dataStorage:
+    enabled: true
+    size: 10Gi
+    mountPath: "/vault/data"
+    storageClass: "longhorn-retain"
+    accessMode: ReadWriteOnce
+    annotations: {}
+    labels: {}
+  server:
+    enabled: true
+    dev:
+      enabled: false
+    extraEnvironmentVars:
+      VAULT_UI: "true"
+  extraVolumes:
+    - name: vault-tls
+      secret:
+        secretName: vault-tls
+  extraVolumeMounts:
+    - name: vault-tls
+      mountPath: /vault/tls
+      readOnly: true
+  ui:
+    enabled: true
+

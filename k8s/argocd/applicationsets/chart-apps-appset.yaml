@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: chart-apps
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/oprimogus/oprimoguslab-gitops.git
+        revision: main
+        files:
+          - path: k8s/infrastructure/charts/apps/*
+  template:
+    metadata:
+      name: '{{path.basename}}'
+      namespace: '{{namespace}}'
+    spec:
+      project: infrastructure
+      source:
+        repoURL: '{{repoURL}}'
+        targetRevision: '{{targetRevision}}'
+        chart: '{{chart}}'
+        helm:
+          values: |
+            {{values}}
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{namespace}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+          - ServerSideApply=true
