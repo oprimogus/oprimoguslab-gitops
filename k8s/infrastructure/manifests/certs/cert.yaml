@@ -6,7 +6,7 @@ metadata:
 spec:
   secretName: cert-tls
   issuerRef:
-    name: letsencrypt-cloudflare-prd
+    name: letsencrypt-cloudflare-production
     kind: ClusterIssuer
   dnsNames:
   - "oprimoguslab.xyz"
