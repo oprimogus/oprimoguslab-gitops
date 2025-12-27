@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cert
+  namespace: infrastructure
+spec:
+  secretName: cert-tls
+  issuerRef:
+    name: letsencrypt-cloudflare-prd
+    kind: ClusterIssuer
+  dnsNames:
+  - oprimoguslab.xyz
+  - auth.oprimoguslab.xyz
+  - drive.oprimoguslab.xyz
