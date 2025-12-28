@@ -1,0 +1,37 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: postgres-cluster
+  namespace: cnpg
+spec:
+  instances: 3
+  # Users
+  managed:
+    roles:
+    - name: flyfood-api-prod
+      login: true
+      # Secret must be "type: kubernetes.io/basic-auth"
+      passwordSecret:
+        name: flyfood-api-prod-db
+    - name: flyfood-api-dev
+      login: true
+      passwordSecret:
+        name: flyfood-api-dev-db
+    - name: zitadel
+      login: true
+      createdb: true
+      createrole: true
+      passwordSecret:
+        name: zitadel-db
+  certificates:
+    serverTLSSecret: postgres-cluster-cert
+    serverCASecret: internal-ca-secret
+    clientCASecret: postgres-cluster-client-cert
+    replicationTLSSecret: postgres-cluster-client-cert
+  storage:
+    # Tipo de Storage; Longhorn usado para permitir resize sem excluir o cluster
+    storageClass: longhorn
+    # Size define o tamanho de cada  instancia. Exemplo: 40Gi x 3 instances = 120Gi
+    size: 10Gi
+  monitoring:
+    enablePodMonitor: true
