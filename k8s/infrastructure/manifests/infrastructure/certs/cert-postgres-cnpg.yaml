@@ -12,6 +12,6 @@ spec:
     - postgres-cluster-ro.cnpg.svc.cluster.local
     - postgres-cluster-r.cnpg.svc.cluster.local
   issuerRef:
-    name: ca-issuer
-    kind: Issuer
+    name: selfsigned-cluster-issuer
+    kind: ClusterIssuer
     group: cert-manager.io

@@ -11,5 +11,5 @@ spec:
     algorithm: RSA
     size: 2048
   issuerRef:
-    name: selfsigned-issuer
-    kind: Issuer
+    name: selfsigned-cluster-issuer
+    kind: ClusterIssuer
