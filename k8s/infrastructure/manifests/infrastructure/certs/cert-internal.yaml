@@ -2,7 +2,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: internal-ca
-  namespace: cert-manager
+  namespace: cert-manager-system
 spec:
   isCA: true
   commonName: internal-ca
