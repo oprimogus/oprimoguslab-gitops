@@ -1,0 +1,51 @@
+name: zitadel
+repoURL: 'https://charts.zitadel.com'
+targetRevision: 8.13.1
+chart: zitadel
+namespace: zitadel
+values: |
+  envVarsSecret: zitadel
+  zitadel:
+    masterkeySecretName: zitadel-masterkey
+    configmapConfig:
+      ExternalSecure: true
+      ExternalDomain: auth.oprimoguslab.xyz
+      TLS:
+        Enabled: false
+      Database:
+        Postgres:
+          Host: postgres-cluster-rw.cnpg.svc.cluster.local
+          Port: 5432
+          MaxOpenConns: 20
+          MaxIdleConns: 10
+          MaxConnLifetime: 30m
+          MaxConnIdleTime: 5m
+          User:
+            SSL:
+              Mode: verify-full
+          Admin:
+            SSL:
+              Mode: verify-full
+    debug:
+      enabled: true
+      annotations:
+        helm.sh/hook: 'pre-install,pre-upgrade'
+        helm.sh/hook-weight: '1'
+    dbSslCaCrtSecret: internal-ca-secret
+    dbSslAdminCrtSecret: postgres-cluster-client-cert
+    dbSslUserCrtSecret: postgres-cluster-client-cert
+  ingress:
+    enabled: true
+    className: traefik
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.tls: "true"
+    hosts:
+      - host: auth.oprimoguslab.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - hosts:
+          - auth.oprimoguslab.xyz
+        secretName: cert-tls
