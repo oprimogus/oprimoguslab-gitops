@@ -1,0 +1,17 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: postgres-cluster-cert
+  namespace: zitadel
+spec:
+  secretName: postgres-cluster-cert
+  usages:
+    - server auth
+  dnsNames:
+    - postgres-cluster-rw.cnpg.svc.cluster.local
+    - postgres-cluster-ro.cnpg.svc.cluster.local
+    - postgres-cluster-r.cnpg.svc.cluster.local
+  issuerRef:
+    name: ca-issuer
+    kind: Issuer
+    group: cert-manager.io
