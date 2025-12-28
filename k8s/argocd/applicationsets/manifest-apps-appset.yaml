@@ -10,11 +10,15 @@ spec:
         revision: main
         directories:
           - path: k8s/infrastructure/manifests/*
+    - list:
+        elements:
+          - folder: cnpg
+            project: databases 
   template:
     metadata:
       name: '{{path.basename}}'
     spec:
-      project: infrastructure
+      project: '{{path[3]}}'
       source:
         repoURL: https://github.com/oprimogus/oprimoguslab-gitops.git
         targetRevision: main
