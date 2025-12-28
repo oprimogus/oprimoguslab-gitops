@@ -9,7 +9,7 @@ spec:
         repoURL: https://github.com/oprimogus/oprimoguslab-gitops.git
         revision: main
         directories:
-          - path: k8s/infrastructure/manifests/*
+          - path: k8s/infrastructure/manifests/*/*
     - list:
         elements:
           - folder: cnpg
@@ -25,7 +25,7 @@ spec:
         path: '{{path}}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: infrastructure
+        namespace: '{{path.basename}}'
       syncPolicy:
         automated:
           prune: true
