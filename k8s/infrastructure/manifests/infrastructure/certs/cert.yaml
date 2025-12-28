@@ -3,12 +3,11 @@ kind: Certificate
 metadata:
   name: cert
   namespace: infrastructure
-  annotations:
-      # Permite que o segredo seja refletido para outros namespaces
-      reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
-      # Define quais namespaces podem receber a cópia (* para todos)
-      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "cnpg"
 spec:
+  secretTemplate:
+    annotations:
+      reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
+      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "cnpg"
   secretName: cert-tls
   issuerRef:
     name: letsencrypt-cloudflare-production
