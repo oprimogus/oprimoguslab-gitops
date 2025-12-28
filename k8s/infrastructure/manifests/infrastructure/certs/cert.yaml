@@ -7,7 +7,7 @@ spec:
   secretTemplate:
     annotations:
       reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
-      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "cnpg"
+      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "monitoring"
   secretName: cert-tls
   issuerRef:
     name: letsencrypt-cloudflare-production
