@@ -135,6 +135,15 @@ values: |
         storageClass: "longhorn-retain"
         accessModes: ReadWriteOnce
         size: 2Gi
+    
+    flaresolverr:
+      ingress:
+        enabled: true
+        hosts:
+          - host: flaresolverr.oprimoguslab.xyz
+            paths:
+              - path: /
+                pathType: Prefix
         
     cleanuparr:
       ingress:
