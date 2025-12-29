@@ -15,3 +15,4 @@ values: |
       enabled: true
       authorizedSecrets:
         - internal-ca
+        - certs-bundle
