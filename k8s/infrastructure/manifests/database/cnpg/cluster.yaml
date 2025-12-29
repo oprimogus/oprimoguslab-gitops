@@ -30,7 +30,7 @@ spec:
     clientCASecret: certs-bundle
   storage:
     # Tipo de Storage; Longhorn usado para permitir resize sem excluir o cluster
-    storageClass: longhorn
+    storageClass: longhorn-retain
     # Size define o tamanho de cada  instancia. Exemplo: 40Gi x 3 instances = 120Gi
     size: 10Gi
   monitoring:
