@@ -19,5 +19,5 @@ values: |
       ingress:
         enabled: true
         hosts:
-          - grafana.oprimoguslab.xyz
+          - "grafana.oprimoguslab.xyz"
       
