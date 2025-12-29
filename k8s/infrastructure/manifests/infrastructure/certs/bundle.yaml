@@ -13,8 +13,7 @@ spec:
         name: internal-ca
         key: ca.crt
   target:
-    secret:
-      name: internal-ca
+    configMap:
       key: ca.crt
     # O trust-manager criará um ConfigMap com este nome em todos os namespaces
     # configMap:
