@@ -27,3 +27,4 @@ spec:
           values:
             - cnpg
             - zitadel
+            - infrastructure
