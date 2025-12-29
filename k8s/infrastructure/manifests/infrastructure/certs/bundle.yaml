@@ -20,6 +20,10 @@ spec:
     # configMap:
     #   key: "ca.crt"
     # Opcional: filtrar namespaces
-    # namespaceSelector:
-    #   matchLabels:
-    #     kubernetes.io/metadata.name: cnpg
+    namespaceSelector:
+      matchExpressions:
+        - key: kubernetes.io/metadata.name
+          operator: In
+          values:
+            - cnpg
+            - zitadel
