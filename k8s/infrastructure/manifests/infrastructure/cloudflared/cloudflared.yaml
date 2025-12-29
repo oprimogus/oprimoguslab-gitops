@@ -48,5 +48,5 @@ spec:
           secret:
             secretName: certs-bundle  # Nome do seu segredo
             items:
-              - key: tls.crt  # O campo que contém o certificado no segredo
+              - key: ca.crt  # O campo que contém o certificado no segredo
                 path: tls.crt  # Nome do arquivo que será montado
