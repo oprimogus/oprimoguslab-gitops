@@ -26,7 +26,7 @@ spec:
   certificates:
     serverTLSSecret: postgres-cluster-cert
     serverCASecret: internal-ca
-    clientCASecret: postgres-cluster-client-cert
+    clientCASecret: internal-ca
     replicationTLSSecret: postgres-cluster-client-cert
   storage:
     # Tipo de Storage; Longhorn usado para permitir resize sem excluir o cluster
