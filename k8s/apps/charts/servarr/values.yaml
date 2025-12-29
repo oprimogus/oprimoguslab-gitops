@@ -1,0 +1,151 @@
+name: servarr
+repoURL: https://charts.kubito.dev
+targetRevision: 1.2.2
+chart: servarr
+namespace: servarr
+values: |
+    jellyfin:
+      image:
+        tag: "10.10.6"
+      persistence:
+        config:
+          enabled: true
+          isPvc: true
+          storageClass: "longhorn"
+          accessModes: ReadWriteOnce
+          size: 4Gi
+        media:
+          enabled: true
+          isPvc: true
+          # existingClaim: pvc-911382cc-4550-4670-9834-2bf062211d04
+          storageClass: "longhorn-retain"
+          accessModes: ReadWriteOnce
+          size: 500Gi
+      ingress:
+        enabled: true
+        hosts:
+          - jellyfin.oprimoguslab.xyz
+        path: /
+
+    sonarr:
+      ingress:
+        enabled: true
+        hosts:
+          - host: sonarr.oprimoguslab.xyz
+            paths:
+              - path: /
+                pathType: Prefix
+      persistence:
+        enabled: true
+        storageClass: "longhorn-retain"
+        accessModes: ReadWriteOnce
+        size: 2Gi
+    
+    qbittorrent:
+      ingress:
+        enabled: true
+        hosts:
+          - host: qbittorrent.oprimoguslab.xyz
+            paths:
+              - path: /
+                pathType: Prefix
+      initContainers:
+        - name: fix-perms
+          image: busybox
+          command:
+            - sh
+            - -c
+            - chown -R 1000:1000 /media && chmod -R 775 /media
+          volumeMounts:
+            - name: media
+              mountPath: /media
+      persistence:
+        enabled: true
+        storageClass: "longhorn-retain"
+        accessModes: ReadWriteOnce
+        size: 2Gi
+        
+    prowlarr:
+      ingress:
+        enabled: true
+        hosts:
+          - host: prowlarr.oprimoguslab.xyz
+            paths:
+              - path: /
+                pathType: Prefix
+      persistence:
+        enabled: true
+        storageClass: "longhorn-retain"
+        accessModes: ReadWriteOnce
+        size: 2Gi
+        
+    jellyseerr:
+      ingress:
+        enabled: true
+        hosts:
+          - host: jellyseerr.oprimoguslab.xyz
+            paths:
+              - path: /
+                pathType: Prefix
+      persistence:
+        enabled: true
+        storageClass: "longhorn-retain"
+        accessModes: ReadWriteOnce
+        size: 2Gi
+        
+    bazarr:
+      ingress:
+        enabled: true
+        hosts:
+          - host: bazarr.oprimoguslab.xyz
+            paths:
+              - path: /
+                pathType: Prefix
+      persistence:
+        enabled: true
+        storageClass: "longhorn-retain"
+        accessModes: ReadWriteOnce
+        size: 2Gi
+        
+    radarr:
+      ingress:
+        enabled: true
+        hosts:
+          - host: radarr.oprimoguslab.xyz
+            paths:
+              - path: /
+                pathType: Prefix
+      persistence:
+        enabled: true
+        existingClaim: 
+        storageClass: "longhorn-retain"
+        accessModes: ReadWriteOnce
+        size: 2Gi
+    
+    lidarr:
+      ingress:
+        enabled: true
+        hosts:
+          - host: lidarr.oprimoguslab.xyz
+            paths:
+              - path: /
+                pathType: Prefix
+      persistence:
+        enabled: true
+        storageClass: "longhorn-retain"
+        accessModes: ReadWriteOnce
+        size: 2Gi
+        
+    cleanuparr:
+      ingress:
+        enabled: true
+        hosts:
+          - host: cleanuparr.oprimoguslab.xyz
+            paths:
+              - path: /
+                pathType: Prefix
+      persistence:
+        enabled: true
+        storageClass: "longhorn-retain"
+        accessModes: ReadWriteOnce
+        size: 1Gi
