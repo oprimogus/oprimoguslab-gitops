@@ -4,3 +4,6 @@ targetRevision: 0.20.3
 chart: trust-manager
 namespace: cert-manager-system
 values: |
+    app:
+      trust:
+        namespace: cert-manager-system
