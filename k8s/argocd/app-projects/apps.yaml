@@ -6,7 +6,7 @@ metadata:
 spec:
   description: Apps
   sourceRepos:
-      - https://github.com/oprimogus/oprimoguslab-gitops.git
+      - '*'
   destinations:
     - namespace: '*'
       server: https://kubernetes.default.svc
