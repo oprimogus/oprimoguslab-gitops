@@ -6,23 +6,23 @@ metadata:
 spec:
   instances: 3
   # Users
-  # managed:
-  #   roles:
-  #   - name: flyfood-api-prod
-  #     login: true
-  #     # Secret must be "type: kubernetes.io/basic-auth"
-  #     passwordSecret:
-  #       name: flyfood-api-prod-db
-  #   - name: flyfood-api-dev
-  #     login: true
-  #     passwordSecret:
-  #       name: flyfood-api-dev-db
-  #   - name: zitadel
-  #     login: true
-  #     createdb: true
-  #     createrole: true
-  #     passwordSecret:
-  #       name: zitadel-db
+  managed:
+    roles:
+    - name: flyfood-api-prod
+      login: true
+      # Secret must be "type: kubernetes.io/basic-auth"
+      passwordSecret:
+        name: flyfood-api-prod-db
+    - name: flyfood-api-dev
+      login: true
+      passwordSecret:
+        name: flyfood-api-dev-db
+    - name: zitadel
+      login: true
+      createdb: true
+      createrole: true
+      passwordSecret:
+        name: zitadel-db
   certificates:
     serverTLSSecret: postgres-cluster-cert
     replicationTLSSecret: postgres-cluster-client-cert
