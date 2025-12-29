@@ -10,3 +10,7 @@ values: |
       tls:
         approverPolicy:
           certManagerNamespace: cert-manager-system
+    secretTargets:
+      enabled: true
+      authorizedSecrets:
+        - internal-ca
