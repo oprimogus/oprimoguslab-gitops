@@ -25,9 +25,9 @@ spec:
         name: zitadel-db
   certificates:
     serverTLSSecret: postgres-cluster-cert
-    serverCASecret: internal-ca
-    clientCASecret: internal-ca
     replicationTLSSecret: postgres-cluster-client-cert
+    serverCASecret: certs-bundle
+    clientCASecret: certs-bundle
   storage:
     # Tipo de Storage; Longhorn usado para permitir resize sem excluir o cluster
     storageClass: longhorn
