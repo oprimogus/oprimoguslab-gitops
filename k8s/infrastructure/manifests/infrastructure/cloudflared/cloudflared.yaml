@@ -46,7 +46,7 @@ spec:
       volumes:
         - name: cloudflare-cert-volume
           secret:
-            secretName: cert-tls  # Nome do seu segredo
+            secretName: certs-bundle  # Nome do seu segredo
             items:
               - key: tls.crt  # O campo que contém o certificado no segredo
                 path: tls.crt  # Nome do arquivo que será montado
