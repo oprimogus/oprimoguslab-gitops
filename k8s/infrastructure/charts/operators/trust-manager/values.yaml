@@ -7,3 +7,6 @@ values: |
     app:
       trust:
         namespace: cert-manager-system
+      tls:
+        approverPolicy:
+          certManagerNamespace: cert-manager-system
