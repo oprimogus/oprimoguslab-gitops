@@ -16,4 +16,11 @@ values: |
         accessModes:
           - ReadWriteOnce
         size: 20Gi
+      ingress:
+        enabled: true
+        hosts:
+          - host: grafana.oprimoguslab.xyz
+            paths:
+              - path: /
+                pathType: Prefix
       
