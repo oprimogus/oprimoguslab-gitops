@@ -1,0 +1,6 @@
+name: trust-manager
+repoURL: https://charts.jetstack.io
+targetRevision: 0.20.3
+chart: trust-manager
+namespace: cert-manager-system
+values: |
