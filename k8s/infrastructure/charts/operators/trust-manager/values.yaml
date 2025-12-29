@@ -4,12 +4,10 @@ targetRevision: 0.20.3
 chart: trust-manager
 namespace: cert-manager-system
 values: |
+    namespace: cert-manager-system
     app:
       trust:
         namespace: cert-manager-system
-      tls:
-        approverPolicy:
-          certManagerNamespace: cert-manager-system
     secretTargets:
       enabled: true
       authorizedSecrets:
