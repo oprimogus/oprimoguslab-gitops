@@ -1,0 +1,25 @@
+apiVersion: trust.cert-manager.io/v1alpha1
+kind: Bundle
+metadata:
+  name: certs-bundle
+spec:
+  sources:
+    # - secret:
+    #     # O nome do segredo raiz em cert-manager-system
+    #     name: "internal-ca"
+    #     # A chave dentro do segredo que contém o certificado
+    #     key: "ca.crt"
+    - secret:
+        name: internal-ca
+        key: ca.crt
+  target:
+    secret:
+      name: internal-ca
+      key: ca.crt
+    # O trust-manager criará um ConfigMap com este nome em todos os namespaces
+    # configMap:
+    #   key: "ca.crt"
+    # Opcional: filtrar namespaces
+    # namespaceSelector:
+    #   matchLabels:
+    #     kubernetes.io/metadata.name: cnpg
