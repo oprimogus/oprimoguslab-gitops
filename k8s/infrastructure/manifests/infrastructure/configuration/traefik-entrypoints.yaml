@@ -1,0 +1,16 @@
+apiVersion: helm.cattle.io/v1
+kind: HelmChartConfig
+metadata:
+  name: traefik
+  namespace: kube-system
+spec:
+  valuesContent: |-
+    ports:
+      minecraft:
+        port: 25565
+        exposedPort: 25565
+        expose:
+          default: true  # <--- Isso evita o erro de template no service.yaml
+        protocol: TCP
+    additionalArguments:
+      - "--entryPoints.minecraft.address=:25565/tcp"
