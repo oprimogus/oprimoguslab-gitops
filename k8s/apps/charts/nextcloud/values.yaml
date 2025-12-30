@@ -1,6 +1,6 @@
 name: nextcloud
 repoURL: https://nextcloud.github.io/helm/
-targetRevision: 7.0.4
+targetRevision: 8.7.0
 chart: nextcloud
 namespace: nextcloud
 values: |
