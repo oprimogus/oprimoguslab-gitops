@@ -6,8 +6,15 @@ namespace: nextcloud
 values: |
     nextcloud:
         host: drive.oprimoguslab.xyz
-        trustedDomains:
-            - drive.oprimoguslab.xyz
+        existingSecret:
+          enabled: true
+          secretName: nameofsecret
+          usernameKey: nextcloud-username
+          passwordKey: nextcloud-password
+          tokenKey: ""
+          smtpUsernameKey: smtp-username
+          smtpPasswordKey: smtp-password
+          smtpHostKey: smtp-host
     service:
         port: 80
     ingress:
@@ -29,6 +36,12 @@ values: |
             storageClass: longhorn-retain
             accessMode: ReadWriteOnce
             size: 200Gi
+    livenessProbe:
+      enabled: false
+    readinessProbe:
+      enabled: false
+    startupProbe:
+      enabled: false
         
 
 
