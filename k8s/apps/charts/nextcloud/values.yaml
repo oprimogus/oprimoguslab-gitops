@@ -7,7 +7,7 @@ values: |
     nextcloud:
         host: drive.oprimoguslab.xyz
         trustedDomains:
-          - drive.oprimoguslab.xyz
+          - "drive.oprimoguslab.xyz"
         existingSecret:
           enabled: true
           secretName: nextcloud
