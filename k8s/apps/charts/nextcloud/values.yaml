@@ -5,9 +5,9 @@ chart: nextcloud
 namespace: nextcloud
 values: |
     nextcloud:
-        host: drive.oprimogus.xyz
+        host: drive.oprimoguslab.xyz
         trustedDomains:
-            - drive.oprimogus.xyz
+            - drive.oprimoguslab.xyz
     service:
         port: 80
     ingress:
@@ -17,7 +17,7 @@ values: |
         pathType: Prefix
         tls:
           - hosts:
-              - drive.oprimogus.xyz
+              - drive.oprimoguslab.xyz
             secretName: certs-bundle
     persistence:
         enabled: true
