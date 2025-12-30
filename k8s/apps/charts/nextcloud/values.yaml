@@ -8,9 +8,9 @@ values: |
         host: drive.oprimoguslab.xyz
         existingSecret:
           enabled: true
-          secretName: nameofsecret
-          usernameKey: nextcloud-username
-          passwordKey: nextcloud-password
+          secretName: nextcloud
+          usernameKey: username
+          passwordKey: password
           tokenKey: ""
           smtpUsernameKey: smtp-username
           smtpPasswordKey: smtp-password
