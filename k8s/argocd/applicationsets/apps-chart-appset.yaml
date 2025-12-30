@@ -9,10 +9,10 @@ spec:
         repoURL: https://github.com/oprimogus/oprimoguslab-gitops.git
         revision: main
         files:
-          - path: k8s/apps/charts/*
+          - path: k8s/apps/charts/*.yaml
   template:
     metadata:
-      name: '{{path.basename}}'
+      name: '{{name}}'
       namespace: '{{namespace}}'
     spec:
       project: apps
