@@ -1,0 +1,28 @@
+name: playitgg
+repoURL: https://oprimogus.github.io/helm-charts
+targetRevision: 0.1.0
+chart: generic-application
+namespace: minecraft
+values: |
+    name: playitgg
+    environment: prd
+    
+    image:
+      repository: ghcr.io/playit-cloud/playit-agent
+      tag: 0.16
+      pullPolicy: IfNotPresent
+    
+    resources:
+      min:
+        cpu: 200m
+        memory: 128Mi
+      max:
+        cpu: 400m
+        memory: 256Mi
+      autoscaling:
+        enable: false
+    
+    secrets:
+      - name: SECRET_KEY
+        secret: playitgg
+        key: secretKey
