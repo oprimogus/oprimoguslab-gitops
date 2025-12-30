@@ -1,0 +1,34 @@
+name: nextcloud
+repoURL: https://nextcloud.github.io/helm/
+targetRevision: 7.0.4
+chart: nextcloud
+namespace: nextcloud
+values: |
+    nextcloud:
+        host: drive.oprimogus.xyz
+        trustedDomains:
+            - drive.oprimogus.xyz
+    service:
+        port: 80
+    ingress:
+        enabled: true
+        className: traefik
+        path: /
+        pathType: Prefix
+        tls:
+          - hosts:
+              - drive.oprimogus.xyz
+            secretName: certs-bundle
+    persistence:
+        enabled: true
+        storageClass: longhorn-retain
+        accessMode: ReadWriteOnce
+        size: 10Gi
+        nextcloudData:
+            enabled: true
+            storageClass: longhorn-retain
+            accessMode: ReadWriteOnce
+            size: 200Gi
+        
+
+
