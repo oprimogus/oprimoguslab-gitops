@@ -26,8 +26,8 @@ values: |
        MEMORY: 4G
        MAX_MEMORY: 8G
        TYPE: FABRIC
-       FABRIC_LAUNCHER_VERSION: 1.21.11
-       FABRIC_LOADER_VERSION: 0.18.3
+       # FABRIC_LAUNCHER_VERSION: 1.21.11
+       # FABRIC_LOADER_VERSION: 0.18.3
        # MODRINTH_PROJECTS: |
        #   fabric-api
        EULA: true
