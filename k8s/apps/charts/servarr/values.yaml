@@ -21,6 +21,10 @@ values: |
           storageClass: "longhorn-retain"
           accessModes: ReadWriteOnce
           size: 800Gi
+      service:
+        type: NodePort
+        port: 8096
+        nodePort: "8096"
       ingress:
         enabled: true
         hosts:
