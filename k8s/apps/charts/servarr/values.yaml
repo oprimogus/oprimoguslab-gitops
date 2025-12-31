@@ -13,7 +13,7 @@ values: |
           isPvc: true
           storageClass: "longhorn"
           accessModes: ReadWriteOnce
-          size: 4Gi
+          size: 8Gi
         media:
           enabled: true
           isPvc: true
