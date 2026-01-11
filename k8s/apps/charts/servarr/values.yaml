@@ -20,7 +20,7 @@ values: |
           # existingClaim: pvc-911382cc-4550-4670-9834-2bf062211d04
           storageClass: "longhorn-retain"
           accessModes: ReadWriteOnce
-          size: 800Gi
+          size: 1000Gi
       service:
         type: NodePort
         port: 8096
