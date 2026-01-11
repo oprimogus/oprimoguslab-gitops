@@ -6,7 +6,7 @@ namespace: servarr
 values: |
     jellyfin:
       image:
-        tag: "10.10.6"
+        tag: "10.11.5"
       persistence:
         config:
           enabled: true
@@ -84,6 +84,8 @@ values: |
         size: 2Gi
         
     jellyseerr:
+      image:
+        tag: "2.7.3"
       ingress:
         enabled: true
         hosts:
