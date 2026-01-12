@@ -31,9 +31,14 @@ values: |
           - jellyfin.oprimoguslab.xyz
         path: /
       podSecurityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
         fsGroup: 1000
+      extraEnvVars:
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        - name: TZ
+          value: "America/Sao_Paulo"
 
     sonarr:
       ingress:
