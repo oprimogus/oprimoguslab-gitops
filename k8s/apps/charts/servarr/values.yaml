@@ -30,6 +30,10 @@ values: |
         hosts:
           - jellyfin.oprimoguslab.xyz
         path: /
+      podSecurityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
 
     sonarr:
       ingress:
