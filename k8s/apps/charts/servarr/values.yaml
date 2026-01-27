@@ -6,7 +6,7 @@ namespace: servarr
 values: |
     jellyfin:
       image:
-        tag: "10.11.5"
+        tag: "10.11.6"
       persistence:
         config:
           enabled: true
