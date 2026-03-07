@@ -121,6 +121,7 @@ values: |
         storageClass: "longhorn-retain"
         accessModes: ReadWriteOnce
         size: 2Gi
+        existingClaim: pvc-1c939acc-1088-42cb-909a-9979f459615d
         
     radarr:
       ingress:
