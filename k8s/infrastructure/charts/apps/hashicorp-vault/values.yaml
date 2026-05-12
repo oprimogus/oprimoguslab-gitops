@@ -18,6 +18,42 @@ values: |
       enabled: false
     extraEnvironmentVars:
       VAULT_UI: "true"
+    # 1. Preferência de Nó (Ex: Oracle)
+    affinity: |
+      nodeAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          preference:
+            matchExpressions:
+            # A label que você definiu nos seus nós
+            - key: location
+              operator: In
+              values:
+              # O valor da label para o nó da Oracle
+              - oracle
+
+    # 2. Anti-afinidade (Opcional, mas recomendado para espalhar pods)
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 100
+        podAffinityTerm:
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: {{ template "vault.name" . }}
+              app.kubernetes.io/instance: "{{ .Release.Name }}"
+              component: server
+          topologyKey: kubernetes.io/hostname
+
+    # 3. Garantia de espalhamento (Topology Spread)
+    topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: "kubernetes.io/hostname"
+        # Se só houver um nó disponível, ele agenda assim mesmo
+        whenUnsatisfiable: ScheduleAnyway
+        labelSelector:
+          matchLabels:
+            app.kubernetes.io/name: vault
+            component: server
   extraVolumes:
     - name: vault-tls
       secret:
