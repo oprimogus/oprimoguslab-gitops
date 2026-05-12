@@ -4,62 +4,63 @@ targetRevision: 0.31.0
 chart: vault
 namespace: hashicorp
 values: |
-  dataStorage:
-    enabled: true
-    size: 10Gi
-    mountPath: "/vault/data"
-    storageClass: "longhorn-retain"
-    accessMode: ReadWriteOnce
-    annotations: {}
-    labels: {}
-  server:
-    enabled: true
-    dev:
-      enabled: false
-    extraEnvironmentVars:
-      VAULT_UI: "true"
-    # 1. Preferência de Nó (Ex: Oracle)
-    affinity: |
-      nodeAffinity:
-        preferredDuringSchedulingIgnoredDuringExecution:
-        - weight: 100
-          preference:
-            matchExpressions:
-            # A label que você definiu nos seus nós
-            - key: location
-              operator: In
-              values:
-              # O valor da label para o nó da Oracle
-              - oracle
-
-    # 2. Anti-afinidade (Opcional, mas recomendado para espalhar pods)
-    podAntiAffinity:
-      preferredDuringSchedulingIgnoredDuringExecution:
-      - weight: 100
-        podAffinityTerm:
-          labelSelector:
-            matchLabels:
-              component: server
-          topologyKey: kubernetes.io/hostname
-
-    # 3. Garantia de espalhamento (Topology Spread)
-    topologySpreadConstraints:
-      - maxSkew: 1
-        topologyKey: "kubernetes.io/hostname"
-        # Se só houver um nó disponível, ele agenda assim mesmo
-        whenUnsatisfiable: ScheduleAnyway
-        labelSelector:
-          matchLabels:
-            app.kubernetes.io/name: vault
-            component: server
-  extraVolumes:
-    - name: vault-tls
-      secret:
-        secretName: vault-tls
-  extraVolumeMounts:
-    - name: vault-tls
-      mountPath: /vault/tls
-      readOnly: true
-  ui:
-    enabled: true
-
+    values: |
+      server:
+        enabled: true
+        dev:
+          enabled: false
+        # Ajuste: dataStorage deve estar dentro de server
+        dataStorage:
+          enabled: true
+          size: 10Gi
+          mountPath: "/vault/data"
+          storageClass: "longhorn-retain"
+          accessMode: ReadWriteOnce
+        
+        extraEnvironmentVars:
+          VAULT_UI: "true"
+    
+        # 1. Afinidade Corrigida (Sem sintaxe de template Helm)
+        affinity: 
+          nodeAffinity:
+            preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              preference:
+                matchExpressions:
+                - key: location
+                  operator: In
+                  values:
+                  - oracle
+    
+        # 2. Anti-afinidade simplificada para o ArgoCD/Helm
+        # O Chart do Vault já lida com o nome do app internamente
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  component: server
+              topologyKey: kubernetes.io/hostname
+    
+        topologySpreadConstraints:
+          - maxSkew: 1
+            topologyKey: "kubernetes.io/hostname"
+            whenUnsatisfiable: ScheduleAnyway
+            labelSelector:
+              matchLabels:
+                app.kubernetes.io/name: vault
+                component: server
+    
+        # Estes campos devem estar dentro de 'server' no chart oficial
+        extraVolumes:
+          - name: vault-tls
+            secret:
+              secretName: vault-tls
+        extraVolumeMounts:
+          - name: vault-tls
+            mountPath: /vault/tls
+            readOnly: true
+        
+        ui:
+          enabled: true
