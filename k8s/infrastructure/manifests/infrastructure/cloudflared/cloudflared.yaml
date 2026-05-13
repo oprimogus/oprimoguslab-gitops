@@ -37,8 +37,6 @@ spec:
               readOnly: true
           args:
             - "tunnel"
-            - "--protocol"
-            - "http2"
             - "--no-autoupdate"
             - "run"
             - "--token"
