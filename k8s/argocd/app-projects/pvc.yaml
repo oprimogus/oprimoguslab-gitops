@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: system
+  name: pvc
   namespace: argocd
 spec:
   description: My App Project
