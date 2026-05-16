@@ -8,9 +8,7 @@ spec:
   sourceRepos:
     - https://github.com/oprimogus/oprimoguslab-gitops.git
   destinations:
-    - namespace: argocd
-      server: https://kubernetes.default.svc
-    - namespace: system
+    - namespace: '*'
       server: https://kubernetes.default.svc
   clusterResourceWhitelist:
     - group: '*'
