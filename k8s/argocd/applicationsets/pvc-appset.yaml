@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: pvc-appset
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/oprimogus/oprimoguslab-gitops.git
+        revision: main
+        directories:
+          # Mapeia qualquer subpasta direta dentro de k8s/pvc/ (ex: servarr)
+          - path: k8s/pvc/*
+  template:
+    metadata:
+      # O nome da aplicação no ArgoCD será o nome da pasta (ex: pvc-servarr)
+      name: 'pvc-{{path.basename}}'
+    spec:
+      project: pvc
+      source:
+        repoURL: https://github.com/oprimogus/oprimoguslab-gitops.git
+        targetRevision: main
+        # Aponta exatamente para a pasta k8s/pvc/servarr
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        # Aqui acontece a mágica: o namespace destino será o nome da pasta (servarr)
+        namespace: '{{path.basename}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
