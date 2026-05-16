@@ -16,10 +16,7 @@ values: |
           size: 20Gi
         media:
           enabled: true
-          isPvc: true
-          storageClass: "longhorn-retain"
-          accessModes: ReadWriteOnce
-          size: 800Gi
+          existingClaim: "servarr-jellyfin-media"
         extraExistingClaimMounts:
           - name: jellyfin-data
             existingClaim:
