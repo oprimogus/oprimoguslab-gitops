@@ -10,10 +10,7 @@ values: |
       persistence:
         config:
           enabled: true
-          isPvc: true
-          storageClass: "longhorn"
-          accessModes: ReadWriteOnce
-          size: 20Gi
+          existingClaim: "jellyfin-config"
         media:
           enabled: true
           existingClaim: "media-storage"
@@ -46,9 +43,7 @@ values: |
                 pathType: Prefix
       persistence:
         enabled: true
-        storageClass: "longhorn-retain"
-        accessModes: ReadWriteOnce
-        size: 2Gi
+        existingClaim: "sonarr-config"
     
     qbittorrent:
       ingress:
@@ -70,9 +65,7 @@ values: |
               mountPath: /media
       persistence:
         enabled: true
-        storageClass: "longhorn-retain"
-        accessModes: ReadWriteOnce
-        size: 2Gi
+        existingClaim: "qbittorrent-config"
         
     prowlarr:
       ingress:
@@ -84,9 +77,7 @@ values: |
                 pathType: Prefix
       persistence:
         enabled: true
-        storageClass: "longhorn-retain"
-        accessModes: ReadWriteOnce
-        size: 2Gi
+        existingClaim: "prowlarr-config"
         
     jellyseerr:
       image:
@@ -100,9 +91,7 @@ values: |
                 pathType: Prefix
       persistence:
         enabled: true
-        storageClass: "longhorn-retain"
-        accessModes: ReadWriteOnce
-        size: 2Gi
+        existingClaim: "jellyseerr-config"
         
     bazarr:
       ingress:
@@ -114,10 +103,7 @@ values: |
                 pathType: Prefix
       persistence:
         enabled: true
-        storageClass: "longhorn-retain"
-        accessModes: ReadWriteOnce
-        size: 2Gi
-        existingClaim: pvc-1c939acc-1088-42cb-909a-9979f459615d
+        existingClaim: "bazarr-config"
         
     radarr:
       ingress:
@@ -129,10 +115,7 @@ values: |
                 pathType: Prefix
       persistence:
         enabled: true
-        existingClaim: 
-        storageClass: "longhorn-retain"
-        accessModes: ReadWriteOnce
-        size: 2Gi
+        existingClaim: "radarr-config"
     
     lidarr:
       ingress:
@@ -143,10 +126,7 @@ values: |
               - path: /
                 pathType: Prefix
       persistence:
-        enabled: true
-        storageClass: "longhorn-retain"
-        accessModes: ReadWriteOnce
-        size: 2Gi
+        existingClaim: "lidarr-config"
     
     flaresolverr:
       ingress:
@@ -167,6 +147,4 @@ values: |
                 pathType: Prefix
       persistence:
         enabled: true
-        storageClass: "longhorn-retain"
-        accessModes: ReadWriteOnce
-        size: 1Gi
+        existingClaim: "cleanuparr-config"
