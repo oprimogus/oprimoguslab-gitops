@@ -5,7 +5,7 @@ metadata:
   namespace: servarr
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 800Gi
