@@ -17,9 +17,6 @@ values: |
         media:
           enabled: true
           existingClaim: "servarr-jellyfin-media"
-        extraExistingClaimMounts:
-          - name: jellyfin-data
-            existingClaim:
       service:
         type: NodePort
         port: 8096
