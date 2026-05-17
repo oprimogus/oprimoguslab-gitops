@@ -16,7 +16,7 @@ values: |
           size: 20Gi
         media:
           enabled: true
-          existingClaim: "servarr-jellyfin-media"
+          existingClaim: "media-storage"
       service:
         type: NodePort
         port: 8096
