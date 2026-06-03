@@ -30,9 +30,9 @@ values: |
     
     health:
         liveness:
-            enabled: true
+          enabled: true
         readiness:
-            enabled: true
+          enabled: true
     
     
     service:
