@@ -2,7 +2,7 @@ name: glowly-front
 repoURL: https://oprimogus.github.io/helm-charts
 targetRevision: 0.1.0
 chart: generic-application
-namespace: infrastructure
+namespace: glowly
 values: |
     name: glowly-front
     environment: dev
