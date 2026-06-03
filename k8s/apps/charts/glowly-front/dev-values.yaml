@@ -46,5 +46,5 @@ values: |
     
     ingress:
       enabled: true
-      host: oprimoguslab.xyz
-      path: /glowly
+      host: glowly.oprimoguslab.xyz
+      path: /
