@@ -8,20 +8,20 @@ values: |
     environment: dev
 
     image:
-    repository: ghcr.io/oprimogus/glowly-front-main
-    tag: latest
-    pullPolicy: Always
-    pullSecrets:
+      repository: ghcr.io/oprimogus/glowly-front-main
+      tag: latest
+      pullPolicy: Always
+      pullSecrets:
         - github-container-registry
     
     resources:
-    min:
+      min:
         cpu: 100m
         memory: 128Mi
-    max:
+      max:
         cpu: 500m
         memory: 256Mi
-    autoscaling:
+      autoscaling:
         enable: true
         minReplicas: 1
         maxReplicas: 2
@@ -29,22 +29,22 @@ values: |
         targetMemoryUtilizationPercentage: 80
     
     health:
-    liveness:
-        enabled: true
-    readiness:
-        enabled: true
+        liveness:
+            enabled: true
+        readiness:
+            enabled: true
     
     
     service:
-    enabled: true
-    type: ClusterIP
-    ports:
+      enabled: true
+      type: ClusterIP
+      ports:
         - name: http
-        port: 80
-        targetPort: 3000
-        protocol: TCP
+          port: 80
+          targetPort: 3000
+          protocol: TCP
     
     ingress:
-    enabled: true
-    host: oprimoguslab.xyz
-    path: /glowly
+      enabled: true
+      host: oprimoguslab.xyz
+      path: /glowly
