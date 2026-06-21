@@ -15,6 +15,10 @@ spec:
       hostPath:
         path: /mnt/hd3  # O caminho onde o seu HD físico está montado no Servidor Host
         type: Directory
+
+    - name: nas
+      persistentVolumeClaim:
+        claimName: pvc-omv-nas
         
   containers:
     - name: clonador
