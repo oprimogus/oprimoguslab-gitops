@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-migracao-longhorn
+  namespace: servarr  # Mude para o namespace onde está o seu PVC
+spec:
+  volumes:
+    # 1. O volume do Longhorn com seus dados atuais
+    - name: dados-longhorn
+      persistentVolumeClaim:
+        claimName: media-storage
+        
+    # 2. O seu HD físico formatado em ext4
+    - name: hd-novo-ext4
+      hostPath:
+        path: /mnt/hd3  # O caminho onde o seu HD físico está montado no Servidor Host
+        type: Directory
+        
+  containers:
+    - name: clonador
+      image: alpine:latest
+      # O comando mantém o pod vivo em loop para você poder entrar nele
+      command: [ "sh", "-c", "apk add --no-cache rsync && sleep infinity" ]
+      volumeMounts:
+        - name: dados-longhorn
+          mountPath: /origem_longhorn
+        - name: hd-novo-ext4
+          mountPath: /destino_sem_criptografia
