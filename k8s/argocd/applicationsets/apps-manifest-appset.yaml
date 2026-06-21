@@ -9,7 +9,7 @@ spec:
         repoURL: https://github.com/oprimogus/oprimoguslab-gitops.git
         revision: main
         files:
-          - path: k8s/apps/manifests/*/*
+          - path: k8s/apps/manifests/*.yaml
   template:
     metadata:
       name: '{{name}}'
