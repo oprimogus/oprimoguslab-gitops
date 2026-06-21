@@ -1,0 +1,12 @@
+name: nfs-subdir-provisioner
+repoURL: https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
+targetRevision: 4.0.18
+chart: nfs-subdir-external-provisioner
+namespace: kube-system
+values: |
+  nfs:
+    server: 192.168.X.X  # IP do seu OMV
+    path: /srv/dev-disk-by-uuid-059d3b28-f006-4ffd-b29c-d3e96159e198/k8s/
+  storageClass:
+    name: omv-nfs
+    defaultClass: false
