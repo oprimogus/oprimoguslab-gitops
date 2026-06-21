@@ -8,12 +8,11 @@ spec:
     - git:
         repoURL: https://github.com/oprimogus/oprimoguslab-gitops.git
         revision: main
-        files:
-          - path: k8s/apps/manifests/*.yaml
+        directories:
+          - path: k8s/apps/manifests
   template:
     metadata:
-      name: '{{name}}'
-      namespace: '{{namespace}}'
+      name: '{{path.basename}}'
     spec:
       project: apps
       source:
@@ -22,7 +21,7 @@ spec:
         path: '{{path}}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{namespace}}'
+        namespace: argocd 
       syncPolicy:
         automated:
           prune: true
