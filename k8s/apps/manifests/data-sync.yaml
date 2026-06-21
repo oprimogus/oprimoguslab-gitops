@@ -30,3 +30,5 @@ spec:
           mountPath: /origem_longhorn
         - name: hd-novo-ext4
           mountPath: /destino_sem_criptografia
+        - name: nas
+          mountPath: /destino_com_criptografia
