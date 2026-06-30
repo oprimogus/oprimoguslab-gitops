@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: media-storage
+  name: nass-media-storage
   namespace: servarr
 spec:
   accessModes:
