@@ -6,7 +6,7 @@ namespace: kube-system
 values: |
   nfs:
     server: 192.168.18.146
-    path: /export/k8s/
+    path: /k8s/
   storageClass:
     name: omv-nfs
     defaultClass: false
