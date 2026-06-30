@@ -8,5 +8,5 @@ spec:
     - ReadWriteMany
   resources:
     requests:
-      storage: 3727Gi
+      storage: 3600Gi
   storageClassName: omv-nfs
