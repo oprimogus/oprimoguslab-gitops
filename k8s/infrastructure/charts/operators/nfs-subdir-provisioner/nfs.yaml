@@ -5,7 +5,7 @@ chart: nfs-subdir-external-provisioner
 namespace: kube-system
 values: |
   nfs:
-    server: 192.168.18.146  # IP do seu OMV
+    server: 192.168.18.146
     path: /export/k8s/
   storageClass:
     name: omv-nfs
