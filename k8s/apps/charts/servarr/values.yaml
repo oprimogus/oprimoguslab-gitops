@@ -13,7 +13,7 @@ values: |
           existingClaim: "jellyfin-config"
         media:
           enabled: true
-          existingClaim: "media-storage"
+          existingClaim: "nas-media-storage"
       service:
         type: NodePort
         port: 8096
