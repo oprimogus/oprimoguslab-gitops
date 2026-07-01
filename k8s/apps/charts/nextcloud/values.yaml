@@ -35,9 +35,7 @@ values: |
         size: 10Gi
         nextcloudData:
             enabled: true
-            storageClass: longhorn-retain
-            accessMode: ReadWriteOnce
-            size: 200Gi
+            existingClaim: nas-files-storage
     livenessProbe:
       enabled: false
     readinessProbe:
