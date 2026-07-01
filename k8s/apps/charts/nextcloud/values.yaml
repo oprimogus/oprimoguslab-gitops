@@ -40,6 +40,13 @@ values: |
       enabled: false
     startupProbe:
       enabled: false
+    podSecurityContext:
+      fsGroup: 33
+      fsGroupChangePolicy: "Always"
+    securityContext:
+      runAsUser: 33
+      runAsGroup: 33
+      runAsNonRoot: true
         
 
 
