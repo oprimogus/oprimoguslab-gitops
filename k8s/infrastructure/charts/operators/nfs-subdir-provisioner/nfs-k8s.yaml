@@ -8,5 +8,5 @@ values: |
     server: 192.168.18.146
     path: /k8s/
   storageClass:
-    name: omv-nfs-k8s
+    name: omv-nfs
     defaultClass: false
