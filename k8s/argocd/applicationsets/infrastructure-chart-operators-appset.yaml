@@ -12,7 +12,7 @@ spec:
           - path: k8s/infrastructure/charts/operators/*
   template:
     metadata:
-      name: '{{name}}'
+      name: '{{path.basename}}'
       namespace: '{{namespace}}'
     spec:
       project: operators
