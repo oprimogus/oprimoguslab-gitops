@@ -30,9 +30,7 @@ values: |
             secretName: certs-bundle
     persistence:
         enabled: true
-        storageClass: longhorn-retain
-        accessMode: ReadWriteOnce
-        size: 10Gi
+        existingClaim: nextcloud-config
         nextcloudData:
             enabled: true
             existingClaim: nas-files-storage
