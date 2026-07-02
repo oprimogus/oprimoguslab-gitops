@@ -11,9 +11,11 @@ values: |
         config:
           enabled: true
           existingClaim: "jellyfin-config"
-        media:
-          enabled: true
-          existingClaim: "nas-media-storage"
+          media:
+            enabled: true
+            existingClaim: "nas-media-storage"
+            mountPath: /media
+            subPath: ""  # Garante que não vai usar subpasta oculta do chart
       service:
         type: NodePort
         port: 8096
@@ -44,7 +46,14 @@ values: |
       persistence:
         enabled: true
         existingClaim: "sonarr-config"
-    
+      additionalVolumes:
+            - name: media
+          persistentVolumeClaim:
+            claimName: nas-media-storage
+      additionalVolumeMounts:
+        - name: media
+          mountPath: /media
+
     qbittorrent:
       ingress:
         enabled: true
@@ -66,6 +75,13 @@ values: |
       persistence:
         enabled: true
         existingClaim: "qbittorrent-config"
+      additionalVolumes:
+        - name: media
+          persistentVolumeClaim:
+            claimName: nas-media-storage
+      additionalVolumeMounts:
+        - name: media
+          mountPath: /media
         
     prowlarr:
       ingress:
@@ -116,6 +132,13 @@ values: |
       persistence:
         enabled: true
         existingClaim: "radarr-config"
+      additionalVolumes:
+        - name: media
+          persistentVolumeClaim:
+            claimName: nas-media-storage
+      additionalVolumeMounts:
+        - name: media
+          mountPath: /media
     
     lidarr:
       ingress:
@@ -138,7 +161,7 @@ values: |
                 pathType: Prefix
         
     cleanuparr:
-      enabled: true
+      enabled: false
       ingress:
         enabled: true
         hosts:
