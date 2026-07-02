@@ -11,11 +11,11 @@ values: |
         config:
           enabled: true
           existingClaim: "jellyfin-config"
-          media:
-            enabled: true
-            existingClaim: "nas-media-storage"
-            mountPath: /media
-            subPath: ""  # Garante que não vai usar subpasta oculta do chart
+        media:
+          enabled: true
+          existingClaim: "nas-media-storage"
+          mountPath: /media
+          subPath: ""
       service:
         type: NodePort
         port: 8096
@@ -47,7 +47,7 @@ values: |
         enabled: true
         existingClaim: "sonarr-config"
       additionalVolumes:
-            - name: media
+        - name: media
           persistentVolumeClaim:
             claimName: nas-media-storage
       additionalVolumeMounts:
