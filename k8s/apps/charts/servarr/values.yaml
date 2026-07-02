@@ -138,6 +138,7 @@ values: |
                 pathType: Prefix
         
     cleanuparr:
+      enabled: true
       ingress:
         enabled: true
         hosts:
