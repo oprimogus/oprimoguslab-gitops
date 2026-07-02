@@ -82,7 +82,7 @@ values: |
       additionalVolumeMounts:
         - name: media
           mountPath: /media
-        
+
     prowlarr:
       ingress:
         enabled: true
@@ -94,7 +94,7 @@ values: |
       persistence:
         enabled: true
         existingClaim: "prowlarr-config"
-        
+
     jellyseerr:
       image:
         tag: "2.7.3"
@@ -108,7 +108,7 @@ values: |
       persistence:
         enabled: true
         existingClaim: "jellyseerr-config"
-        
+
     bazarr:
       ingress:
         enabled: true
@@ -120,7 +120,7 @@ values: |
       persistence:
         enabled: true
         existingClaim: "bazarr-config"
-        
+
     radarr:
       ingress:
         enabled: true
@@ -139,7 +139,7 @@ values: |
       additionalVolumeMounts:
         - name: media
           mountPath: /media
-    
+
     lidarr:
       ingress:
         enabled: true
@@ -150,7 +150,7 @@ values: |
                 pathType: Prefix
       persistence:
         existingClaim: "lidarr-config"
-    
+
     flaresolverr:
       ingress:
         enabled: true
@@ -159,7 +159,7 @@ values: |
             paths:
               - path: /
                 pathType: Prefix
-        
+
     cleanuparr:
       enabled: false
       ingress:
