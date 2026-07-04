@@ -110,6 +110,8 @@ values: |
         existingClaim: "jellyseerr-config"
 
     bazarr:
+      image:
+        tag: "1.5.6"
       ingress:
         enabled: true
         hosts:
