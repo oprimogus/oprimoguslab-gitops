@@ -30,6 +30,7 @@ values: |
        # FABRIC_LOADER_VERSION: 0.18.3
        MODRINTH_PROJECTS: |
          fabric-api
+         fallingtree
        EULA: true
        MAX_PLAYERS: 20
        ALLOW_NETHER: true
