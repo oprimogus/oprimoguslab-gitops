@@ -30,6 +30,7 @@ values: |
          fabric-api
          fallingtree
          cloth-config
+         skinsrestorer
        EULA: true
        ONLINE_MODE: false
        SERVER_NAME: oprimoguslab-server
