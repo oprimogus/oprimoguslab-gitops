@@ -4,7 +4,7 @@ metadata:
   name: root-app
   namespace: argocd
 spec:
-  project: system
+  project: default
   source:
     repoURL: 'https://github.com/oprimogus/oprimoguslab-gitops.git'
     targetRevision: talos
@@ -27,7 +27,7 @@ metadata:
   name: root-app-projects
   namespace: argocd
 spec:
-  project: system
+  project: default
   source:
     repoURL: 'https://github.com/oprimogus/oprimoguslab-gitops.git'
     targetRevision: talos
