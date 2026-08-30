@@ -1,6 +1,0 @@
-name: keel
-repoURL: https://charts.keel.sh
-targetRevision: 1.0.5
-chart: keel
-namespace: keel
-values: |
