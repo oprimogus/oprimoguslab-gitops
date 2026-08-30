@@ -1,6 +1,6 @@
 name: traefik
 repoURL: https://traefik.github.io/charts
 targetRevision: 41.4.0
-chart: generic-application
-namespace: glowly
+chart: traefik
+namespace: traefik
 values: |
