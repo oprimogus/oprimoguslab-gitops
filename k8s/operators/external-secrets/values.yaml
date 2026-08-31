@@ -1,8 +1,9 @@
-name: external-secrets-operator
-repoURL: https://charts.external-secrets.io
-targetRevision: 0.15.1
-chart: external-secrets
-namespace: external-secrets-system
-values: |
+eso:
   fullnameOverride: external-secrets-operator
   installCRDs: true
+  
+  # Você pode adicionar outras configurações padrão aqui se precisar, ex:
+  # watchNamespace: ""
+  # resources:
+  #   limits:
+  #   ...
