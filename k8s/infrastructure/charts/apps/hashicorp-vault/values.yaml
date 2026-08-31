@@ -1,97 +1,87 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: vault
-  namespace: argocd
-spec:
-  project: default
-  source:
-    repoURL: https://helm.releases.hashicorp.com
-    targetRevision: 0.34.1
-    chart: vault
-    helm:
-      values: |
-        server:
-          enabled: true
-          dev:
-            enabled: false
-          
-          # Configuração de Alta Disponibilidade (HA) e Raft
-          ha:
-            enabled: true
-            replicas: 3
-            raft:
-              enabled: true
-              setNodeId: true
-              config: |
-                ui = true
-                
-                listener "tcp" {
-                  tls_disable = 1
-                  address = "[::]:8200"
-                  cluster_address = "[::]:8201"
-                }
+name: vault
+repoURL: https://helm.releases.hashicorp.com
+targetRevision: 0.31.0
+chart: vault
+namespace: hashicorp
+values: |
+  server:
+    enabled: true
+    dev:
+      enabled: false
 
-                storage "raft" {
-                  path = "/vault/data"
-                }
+    # Configuração de Alta Disponibilidade (HA) com Raft para múltiplos nós
+    ha:
+      enabled: true
+      replicas: 3
+      apiAddr: null
+      clusterAddr: null
+      raft:
+        enabled: true
+        setNodeId: true
+        config: |
+          ui = true
+          listener "tcp" {
+            tls_disable = 1
+            address = "[::]:8200"
+            cluster_address = "[::]:8201"
+          }
+          storage "raft" {
+            path = "/vault/data"
+          }
+          service_registration "kubernetes" {}
 
-                service_registration "kubernetes" {}
-
-          dataStorage:
-            enabled: true
-            size: 10Gi
-            mountPath: "/vault/data"
-            storageClass: "longhorn-retain"
-            accessMode: ReadWriteOnce
-         
-          extraEnvironmentVars:
-            VAULT_UI: "true"
+    # Ajuste: dataStorage deve estar dentro de server
+    dataStorage:
+      enabled: true
+      size: 10Gi
+      mountPath: "/vault/data"
+      storageClass: "longhorn-retain"
+      accessMode: ReadWriteOnce
       
-          affinity: 
-            nodeAffinity:
-              preferredDuringSchedulingIgnoredDuringExecution:
-              - weight: 100
-                preference:
-                  matchExpressions:
-                  - key: location
-                    operator: In
-                    values:
-                    - oracle
+    extraEnvironmentVars:
+      VAULT_UI: "true"
+  
+    # 1. Afinidade Corrigida (Sem sintaxe de template Helm)
+    affinity: 
+      nodeAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          preference:
+            matchExpressions:
+            - key: location
+              operator: In
+              values:
+              - oracle
+  
+    # 2. Anti-afinidade simplificada para o ArgoCD/Helm
+    # O Chart do Vault já lida com o nome do app internamente
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 100
+        podAffinityTerm:
+          labelSelector:
+            matchLabels:
+              component: server
+          topologyKey: kubernetes.io/hostname
+  
+    topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: "kubernetes.io/hostname"
+        whenUnsatisfiable: ScheduleAnyway
+        labelSelector:
+          matchLabels:
+            app.kubernetes.io/name: vault
+            component: server
+  
+    # Estes campos devem estar dentro de 'server' no chart oficial
+    extraVolumes:
+      - name: vault-tls
+        secret:
+          secretName: vault-tls
+    extraVolumeMounts:
+      - name: vault-tls
+        mountPath: /vault/tls
+        readOnly: true
       
-          podAntiAffinity:
-            preferredDuringSchedulingIgnoredDuringExecution:
-            - weight: 100
-              podAffinityTerm:
-                labelSelector:
-                  matchLabels:
-                    component: server
-                topologyKey: kubernetes.io/hostname
-      
-          topologySpreadConstraints:
-            - maxSkew: 1
-              topologyKey: "kubernetes.io/hostname"
-              whenUnsatisfiable: ScheduleAnyway
-              labelSelector:
-                matchLabels:
-                  app.kubernetes.io/name: vault
-                  component: server
-      
-          extraVolumes:
-            - name: vault-tls
-              secret:
-                secretName: vault-tls
-          extraVolumeMounts:
-            - name: vault-tls
-              mountPath: /vault/tls
-              readOnly: true
-         
-          ui:
-            enabled: true
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: hashicorp
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+    ui:
+      enabled: true
