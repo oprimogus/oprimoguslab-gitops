@@ -54,7 +54,7 @@ values: |
               - oracle
   
     # 2. Anti-afinidade simplificada para o ArgoCD/Helm
-    # O Chart do Vault já lida com o nome do app internamente
+    # O Chart do Vault já lida com o nome do app internamente d
     podAntiAffinity:
       preferredDuringSchedulingIgnoredDuringExecution:
       - weight: 100
