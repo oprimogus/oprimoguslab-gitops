@@ -9,7 +9,6 @@ values: |
     dev:
       enabled: false
 
-    # Configuração de Alta Disponibilidade (HA) com Raft para múltiplos nós
     ha:
       enabled: true
       replicas: 3
@@ -30,19 +29,15 @@ values: |
           }
           service_registration "kubernetes" {}
 
-    # Ajuste: dataStorage deve estar dentro de server
     dataStorage:
       enabled: true
       size: 10Gi
       mountPath: "/vault/data"
       storageClass: "longhorn-retain"
       accessMode: ReadWriteOnce
-      
-    extraEnvironmentVars:
-      VAULT_UI: "true"
-  
-    # 1. Afinidade Corrigida (Sem sintaxe de template Helm)
-    affinity: 
+
+    # Afinidade unificada: node + pod anti-affinity no MESMO bloco
+    affinity: |
       nodeAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
         - weight: 100
@@ -52,18 +47,15 @@ values: |
               operator: In
               values:
               - oracle
-  
-    # 2. Anti-afinidade simplificada para o ArgoCD/Helm
-    # O Chart do Vault já lida com o nome do app internamente d
-    podAntiAffinity:
-      preferredDuringSchedulingIgnoredDuringExecution:
-      - weight: 100
-        podAffinityTerm:
-          labelSelector:
-            matchLabels:
-              component: server
-          topologyKey: kubernetes.io/hostname
-  
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            labelSelector:
+              matchLabels:
+                component: server
+            topologyKey: kubernetes.io/hostname
+
     topologySpreadConstraints:
       - maxSkew: 1
         topologyKey: "kubernetes.io/hostname"
@@ -72,16 +64,18 @@ values: |
           matchLabels:
             app.kubernetes.io/name: vault
             component: server
-  
-    # Estes campos devem estar dentro de 'server' no chart oficial
-    extraVolumes:
+
+    # volumes/volumeMounts (raw), não extraVolumes/extraVolumeMounts,
+    # porque você precisa de um mountPath customizado (/vault/tls)
+    volumes:
       - name: vault-tls
         secret:
           secretName: vault-tls
-    extraVolumeMounts:
+    volumeMounts:
       - name: vault-tls
         mountPath: /vault/tls
         readOnly: true
-      
-    ui:
-      enabled: true
+
+  # ui é chave de nível raiz, não fica dentro de server
+  ui:
+    enabled: true
