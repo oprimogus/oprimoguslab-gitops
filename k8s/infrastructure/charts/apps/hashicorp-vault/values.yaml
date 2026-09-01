@@ -2,7 +2,7 @@ name: vault
 repoURL: https://helm.releases.hashicorp.com
 targetRevision: 0.34.1
 chart: vault
-namespace: infrastructure
+namespace: hashicorp
 values: |
   server:
     enabled: true
