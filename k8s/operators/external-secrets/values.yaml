@@ -1,9 +1,0 @@
-eso:
-  fullnameOverride: external-secrets-operator
-  installCRDs: true
-  
-  # Você pode adicionar outras configurações padrão aqui se precisar, ex:
-  # watchNamespace: ""
-  # resources:
-  #   limits:
-  #   ...
