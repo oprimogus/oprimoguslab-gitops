@@ -67,14 +67,14 @@ values: |
 
     # volumes/volumeMounts (raw), não extraVolumes/extraVolumeMounts,
     # porque você precisa de um mountPath customizado (/vault/tls)
-    volumes:
-      - name: vault-tls
-        secret:
-          secretName: vault-tls
-    volumeMounts:
-      - name: vault-tls
-        mountPath: /vault/tls
-        readOnly: true
+    # volumes:
+    #   - name: vault-tls
+    #     secret:
+    #       secretName: vault-tls
+    # volumeMounts:
+    #   - name: vault-tls
+    #     mountPath: /vault/tls
+    #     readOnly: true
 
   # ui é chave de nível raiz, não fica dentro de server
   ui:
