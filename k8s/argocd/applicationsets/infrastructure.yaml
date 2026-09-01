@@ -8,21 +8,21 @@ spec:
     - git:
         repoURL: https://github.com/oprimogus/oprimoguslab-gitops.git
         revision: talos
-        directories:
-          - path: k8s/infrastructure/*
+        files:
+          - path: "k8s/infrastructure/*/*.yaml"
   template:
     metadata:
-      name: '{{path.basename}}'
+      name: '{{name}}'
       namespace: argocd
     spec:
       project: infrastructure
       source:
         repoURL: 'https://github.com/oprimogus/oprimoguslab-gitops.git'
         targetRevision: talos
-        path: '{{path}}'
+        path: '{{path.path}}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{path.basename}}'
+        namespace: '{{namespace}}'
       syncPolicy:
         automated:
           prune: true
