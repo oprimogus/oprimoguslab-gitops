@@ -4,28 +4,33 @@ metadata:
   name: operators
   namespace: argocd
 spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
   generators:
     - git:
         repoURL: https://github.com/oprimogus/oprimoguslab-gitops.git
         revision: talos
         files:
-          - path: k8s/operators/*
+          - path: "k8s/operators/*/app.yaml"
   template:
     metadata:
-      name: '{{path.basename}}'
-      namespace: '{{namespace}}'
+      name: '{{ .name }}'
+      namespace: argocd
     spec:
       project: operators
-      source:
-        repoURL: '{{repoURL}}'
-        targetRevision: '{{targetRevision}}'
-        chart: '{{chart}}'
-        helm:
-          values: |
-            {{values}}
+      sources:
+        - repoURL: '{{ .repoURL }}'
+          chart: '{{ .chart }}'
+          targetRevision: '{{ .targetRevision }}'
+          helm:
+            values: |
+              {{- .values | nindent 14 }}
+        - repoURL: 'https://github.com/oprimogus/oprimoguslab-gitops.git'
+          targetRevision: talos
+          path: '{{ .path.path }}/templates'
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{namespace}}'
+        namespace: '{{ .namespace }}'
       syncPolicy:
         automated:
           prune: true
@@ -33,3 +38,4 @@ spec:
         syncOptions:
           - CreateNamespace=true
           - ServerSideApply=true
+          - RespectIgnoreDifferences=true
