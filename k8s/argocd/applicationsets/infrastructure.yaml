@@ -9,7 +9,7 @@ spec:
         repoURL: https://github.com/oprimogus/oprimoguslab-gitops.git
         revision: talos
         files:
-          - path: "k8s/infrastructure/*/*.yaml"
+          - path: "k8s/infrastructure/*/app.yaml"
   template:
     metadata:
       name: '{{name}}'
@@ -20,6 +20,8 @@ spec:
         repoURL: 'https://github.com/oprimogus/oprimoguslab-gitops.git'
         targetRevision: talos
         path: '{{path.path}}'
+        directory:
+          exclude: 'app.yaml'
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{namespace}}'
