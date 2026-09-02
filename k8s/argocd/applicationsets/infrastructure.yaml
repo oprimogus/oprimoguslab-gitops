@@ -9,7 +9,7 @@ spec:
         repoURL: https://github.com/oprimogus/oprimoguslab-gitops.git
         revision: talos
         directories:
-          - path: k8s/infrastructure/*/*
+          - path: k8s/infrastructure/*
   template:
     metadata:
       name: '{{path.basename}}'
