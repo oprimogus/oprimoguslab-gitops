@@ -1,0 +1,23 @@
+name: traefik
+repoURL: https://traefik.github.io/charts
+targetRevision: 41.4.0
+chart: traefik
+namespace: traefik
+values: |
+  # ports:
+  #   web:
+  #     redirectTo:
+  #       port: websecure
+  #       priority: 10
+  #   websecure:
+  #     tls:
+  #       enabled: true
+  # providers:
+  #   kubernetesCRD:
+  #     enabled: true
+  #     allowCrossNamespace: true
+  #   kubernetesIngress:
+  #     enabled: true
+  # ingressRoute:
+  #   dashboard:
+  #     enabled: true
