@@ -1,9 +1,4 @@
-name: longhorn
-repoURL: https://charts.longhorn.io/
-targetRevision: 1.12.1
-chart: longhorn
-namespace: longhorn-system
-values: |
+longhorn:
   preUpgradeChecker:
     jobEnabled: false
   defaultSettings:
