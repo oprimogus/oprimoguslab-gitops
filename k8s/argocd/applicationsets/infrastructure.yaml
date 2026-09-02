@@ -14,7 +14,7 @@ spec:
     metadata:
       name: '{{path.basename}}'
     spec:
-      project: '{{path[3]}}'
+      project: infrastructure
       source:
         repoURL: https://github.com/oprimogus/oprimoguslab-gitops.git
         targetRevision: talos
