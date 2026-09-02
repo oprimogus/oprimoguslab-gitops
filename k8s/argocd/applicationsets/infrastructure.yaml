@@ -7,21 +7,20 @@ spec:
   generators:
     - git:
         repoURL: https://github.com/oprimogus/oprimoguslab-gitops.git
-        revision: talos
+        revision: main
         files:
           - path: "k8s/infrastructure/*/app.yaml"
   template:
     metadata:
-      name: '{{name}}'
-      namespace: argocd
+      name: '{{path.basename}}'
     spec:
       project: infrastructure
       source:
-        repoURL: 'https://github.com/oprimogus/oprimoguslab-gitops.git'
-        targetRevision: talos
-        path: '{{path.path}}'
+        repoURL: https://github.com/oprimogus/oprimoguslab-gitops.git
+        targetRevision: main
+        path: '{{path.dirname}}'
         directory:
-          exclude: 'app.yaml'
+          exclude: app.yaml
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{namespace}}'
@@ -31,5 +30,3 @@ spec:
           selfHeal: true
         syncOptions:
           - CreateNamespace=true
-          - ServerSideApply=true
-          - RespectIgnoreDifferences=true

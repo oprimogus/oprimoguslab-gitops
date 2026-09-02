@@ -1,2 +1,2 @@
-name: config-longhorn
 namespace: longhorn-system
+project: infrastructure
