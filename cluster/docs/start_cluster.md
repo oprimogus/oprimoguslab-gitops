@@ -54,6 +54,11 @@ export WORKER_IP=<your-worker-ip>
 talosctl apply-config --insecure --nodes $WORKER_IP --file worker.yaml
 ```
 
+```bash
+talosctl --talosconfig=./talosconfig patch machineconfig --nodes $WORKER_IP --patch @./cluster.worker-configs/volume.yaml
+```
+
+
 ## Upgrade Talos
 
 ```bash

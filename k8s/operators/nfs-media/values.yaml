@@ -1,0 +1,12 @@
+name: nfs-media
+repoURL: https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
+targetRevision: 4.0.18
+chart: nfs-subdir-external-provisioner
+namespace: kube-system
+values: |
+  nfs:
+    server: 192.168.18.146
+    path: /k8s/
+  storageClass:
+    name: nfs-media
+    defaultClass: false
