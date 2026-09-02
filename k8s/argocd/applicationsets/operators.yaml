@@ -50,7 +50,7 @@ spec:
   generators:
     - git:
         repoURL: https://github.com/oprimogus/oprimoguslab-gitops.git
-        revision: main
+        revision: talos
         files:
           - path: k8s/operators/*
   template:
