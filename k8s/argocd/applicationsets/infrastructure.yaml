@@ -4,6 +4,8 @@ metadata:
   name: infrastructure
   namespace: argocd
 spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=default"]
   generators:
     - git:
         repoURL: https://github.com/oprimogus/oprimoguslab-gitops.git
@@ -12,18 +14,18 @@ spec:
           - path: "k8s/infrastructure/*/app.yaml"
   template:
     metadata:
-      name: '{{path.basename}}'
+      name: '{{ base (dir .path.path) }}'
     spec:
-      project: infrastructure
+      project: '{{ .project | default "infrastructure" }}'
       source:
         repoURL: https://github.com/oprimogus/oprimoguslab-gitops.git
         targetRevision: main
-        path: '{{path.dirname}}'
+        path: '{{ dir .path.path }}'
         directory:
           exclude: app.yaml
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{namespace}}'
+        namespace: '{{ .namespace }}'
       syncPolicy:
         automated:
           prune: true
