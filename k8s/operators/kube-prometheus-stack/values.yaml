@@ -1,6 +1,6 @@
 name: kube-prometheus-stack
 repoURL: https://prometheus-community.github.io/helm-charts
-targetRevision: 80.6.0
+targetRevision: 88.6.3
 chart: kube-prometheus-stack
 namespace: monitoring
 values: |
@@ -11,11 +11,8 @@ values: |
         passwordKey: grafanaAdminPassword
       persistence:
         enabled: true
-        type: sts
-        storageClassName: longhorn-retain
-        accessModes:
-          - ReadWriteOnce
-        size: 20Gi
+        type: pvc
+        existingClaim: kube-prometheus-data
       ingress:
         enabled: true
         hosts:
