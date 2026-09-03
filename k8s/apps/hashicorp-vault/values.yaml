@@ -1,0 +1,79 @@
+name: vault
+repoURL: https://helm.releases.hashicorp.com
+targetRevision: 0.34.1
+chart: vault
+namespace: hashicorp
+values: |
+  server:
+    enabled: true
+    dev:
+      enabled: false
+
+    ha:
+      enabled: true
+      replicas: 3
+      apiAddr: null
+      clusterAddr: null
+      raft:
+        enabled: true
+        setNodeId: true
+        config: |
+          ui = true
+          listener "tcp" {
+            tls_disable = 1
+            address = "[::]:8200"
+            cluster_address = "[::]:8201"
+          }
+          storage "raft" {
+            path = "/vault/data"
+          }
+          service_registration "kubernetes" {}
+
+    dataStorage:
+      enabled: true
+      size: 2Gi
+      mountPath: "/vault/data"
+      storageClass: "longhorn-retain"
+      accessMode: ReadWriteOnce
+
+    affinity: |
+      nodeAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          preference:
+            matchExpressions:
+            - key: location
+              operator: In
+              values:
+              - oracle
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            labelSelector:
+              matchLabels:
+                component: server
+            topologyKey: kubernetes.io/hostname
+
+    topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: "kubernetes.io/hostname"
+        whenUnsatisfiable: ScheduleAnyway
+        labelSelector:
+          matchLabels:
+            app.kubernetes.io/name: vault
+            component: server
+
+    # volumes/volumeMounts (raw), não extraVolumes/extraVolumeMounts,
+    # porque você precisa de um mountPath customizado (/vault/tls)
+    # volumes:
+    #   - name: vault-tls
+    #     secret:
+    #       secretName: vault-tls
+    # volumeMounts:
+    #   - name: vault-tls
+    #     mountPath: /vault/tls
+    #     readOnly: true
+
+  ui:
+    enabled: true
