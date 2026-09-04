@@ -13,8 +13,8 @@ values: |
     
     resources:
       min:
-        cpu: 1000m
-        memory: 2Gi
+        cpu: 500m
+        memory: 1Gi
       max:
         cpu: 4000m
         memory: 8Gi
