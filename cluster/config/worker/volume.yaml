@@ -4,5 +4,6 @@ name: longhorn
 provisioning:
   diskSelector:
     match: disk.dev_path == '/dev/sdb' && !system_disk
-  minSize: 120GB
+  minSize: 100GiB
+  maxSize: 120GiB
   grow: true
