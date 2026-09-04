@@ -1,0 +1,14 @@
+name: seaweedfs
+repoURL: oci://ghcr.io/quenchworks/charts/seaweedfs
+targetRevision: 0.0.19
+chart: seaweedfs
+namespace: seaweedfs
+values: |
+    auth:
+      enabled: true
+      existingSecret: "seaweedfs"
+      existingSecretAccessKeyKey: "access-key"
+      existingSecretSecretKeyKey: "secret-key"
+    persistence:
+      enabled: true
+      existingClaim: "seaweedfs-pvc"
