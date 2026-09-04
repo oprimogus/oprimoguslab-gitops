@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: prowlarr-config-pv
+spec:
+  capacity:
+    storage: 4Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: longhorn-retain
+  csi:
+    driver: driver.longhorn.io
+    volumeAttributes:
+      numberOfReplicas: "1"
+      staleReplicaTimeout: "20"
+    volumeHandle: pvc-df6e2e08-3dec-4000-9956-3f925964e6b5
