@@ -13,6 +13,6 @@ spec:
   csi:
     driver: driver.longhorn.io
     volumeAttributes:
-      numberOfReplicas: "3"
-      staleReplicaTimeout: "2880"
+      numberOfReplicas: "1"
+      staleReplicaTimeout: "20"
     volumeHandle: pvc-968a6936-cf21-423d-9651-64aa5b6cd380
