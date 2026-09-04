@@ -8,7 +8,7 @@ values: |
     
     image:
       repository: itzg/minecraft-server
-      tag: java25-graalvm
+      tag: java21-graalvm
       pullPolicy: IfNotPresent
     
     resources:
