@@ -10,7 +10,7 @@ values: |
       persistence:
         config:
           enabled: true
-          existingClaim: "jellyfin-config"
+          existingClaim: "jellyfin-config-pvc"
         media:
           enabled: true
           existingClaim: "nas-media-storage"
