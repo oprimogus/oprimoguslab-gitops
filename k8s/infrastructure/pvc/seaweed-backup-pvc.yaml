@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: nas-s3
+  name: nas-s3-2
   namespace: seaweedfs
 spec:
   accessModes:
