@@ -1,6 +1,6 @@
 name: minecraft
 repoURL: https://oprimogus.github.io/helm-charts
-targetRevision: 0.1.2
+targetRevision: 0.1.3
 chart: generic-application
 namespace: minecraft
 values: |
@@ -17,7 +17,7 @@ values: |
         memory: 1Gi
       max:
         cpu: 4000m
-        memory: 8Gi
+        memory: 4Gi
       autoscaling:
         enable: false
     
@@ -53,3 +53,29 @@ values: |
           port: 25565
           targetPort: 25565
           protocol: TCP
+    ingress:
+      enabled: true
+    
+    sidecars:
+      - name: playitgg
+        environment: prd
+        
+        image:
+          repository: ghcr.io/playit-cloud/playit-agent
+          tag: 0.16
+          pullPolicy: IfNotPresent
+        
+        resources:
+          min:
+            cpu: 200m
+            memory: 128Mi
+          max:
+            cpu: 400m
+            memory: 256Mi
+          autoscaling:
+            enable: false
+        
+        secrets:
+          - name: SECRET_KEY
+            secret: playitgg
+            key: secretKey
