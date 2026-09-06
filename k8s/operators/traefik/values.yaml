@@ -22,6 +22,8 @@ values: |
       allowCrossNamespace: true
     kubernetesIngress:
       enabled: true
+    kubernetesGateway:
+      enabled: true
   ingressRoute:
     dashboard:
       enabled: true
