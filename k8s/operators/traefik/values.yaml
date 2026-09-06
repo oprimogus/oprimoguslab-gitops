@@ -27,3 +27,8 @@ values: |
   ingressRoute:
     dashboard:
       enabled: true
+  gateway:
+    listeners:
+      web:
+        namespacePolicy:
+          from: All
