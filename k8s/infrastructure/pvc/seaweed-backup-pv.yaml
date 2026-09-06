@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nas-s3-pv
+spec:
+  capacity:
+    storage: 80Gi # Ajuste para o tamanho desejado
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain # Garante que os dados NÃO sejam apagados se o PVC for deletado
+  nfs:
+    server: 192.168.18.146 # IP do seu NAS
+    path: /backup/seaweedfs-nas-s3-pvc-de810747-2e92-49ba-bffa-bc48e0504f67 # Altere para a pasta exata do NAS

@@ -8,5 +8,5 @@ spec:
     - ReadWriteMany
   resources:
     requests:
-      storage: 80Gi
-  storageClassName: nfs-s3
+      storage: 100Gi
+  volumeName: nas-s3-pv
