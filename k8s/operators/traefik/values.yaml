@@ -7,16 +7,19 @@ values: |
   ports:
     web:
       redirections:
-        entryPoint:
-          to: websecure
-          scheme: https
-          permanent: true
+        entryPoint: web
+        to: websecure
+        scheme: https
+        permanent: true
     websecure:
       tls:
         enabled: true
-        allowCrossNamespace: true
-      kubernetesIngress:
-        enabled: true
-    ingressRoute:
-      dashboard:
-        enabled: true
+  providers:
+    kubernetesCRD:
+      enabled: true
+      allowCrossNamespace: true
+    kubernetesIngress:
+      enabled: true
+  ingressRoute:
+    dashboard:
+      enabled: true
