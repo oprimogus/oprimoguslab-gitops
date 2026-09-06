@@ -11,6 +11,6 @@ values: |
       existingSecretSecretKeyKey: "secret-key"
     persistence:
       enabled: true
-      existingClaim: "nas-s3-3"
+      existingClaim: "nas-s3-4"
     networkPolicy:
       allowExternal: true

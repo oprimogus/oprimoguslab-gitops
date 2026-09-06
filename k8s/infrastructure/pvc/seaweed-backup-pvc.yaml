@@ -1,11 +1,12 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: nas-s3-3
+  name: nas-s3-4
   namespace: seaweedfs
 spec:
   accessModes:
     - ReadWriteMany
+  storageClassName: "" 
   resources:
     requests:
       storage: 80Gi
