@@ -13,19 +13,19 @@ talosctl gen secrets -o secrets.yaml
 ```
 
 ```bash
-talosctl get disks --insecure --nodes $CONTROL_PLANE_IP
+talosctl --talosconfig=./cluster/talosconfig get disks --insecure --nodes $CONTROL_PLANE_IP
 ```
 
 ```bash
-talosctl gen config --with-secrets secrets.yaml $CLUSTER_NAME https://$CONTROL_PLANE_IP:6443
+talosctl --talosconfig=./cluster/talosconfig gen config --with-secrets secrets.yaml $CLUSTER_NAME https://$CONTROL_PLANE_IP:6443
 ```
 
 ```bash
-talosctl apply-config --insecure --nodes $CONTROL_PLANE_IP --file controlplane.yaml
+talosctl --talosconfig=./cluster/talosconfig apply-config --insecure --nodes $CONTROL_PLANE_IP --file controlplane.yaml
 ```
 
 ```bash
-talosctl --talosconfig=./talosconfig config endpoints $CONTROL_PLANE_IP
+talosctl --talosconfig=./cluster/talosconfig config endpoints $CONTROL_PLANE_IP
 ```
 
 ```bash
@@ -55,7 +55,7 @@ talosctl apply-config --insecure --nodes $WORKER_IP --file worker.yaml
 ```
 
 ```bash
-talosctl --talosconfig=./talosconfig patch machineconfig --nodes $WORKER_IP --patch @./cluster.worker-configs/volume.yaml
+talosctl --talosconfig=./cluster/talosconfig patch machineconfig --nodes $WORKER_IP --patch @./cluster/config/worker/volume.yaml
 ```
 
 

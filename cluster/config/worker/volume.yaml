@@ -5,5 +5,5 @@ provisioning:
   diskSelector:
     match: disk.dev_path == '/dev/sdb' && !system_disk
   minSize: 100GiB
-  maxSize: 120GiB
+  maxSize: 256GiB
   grow: true
