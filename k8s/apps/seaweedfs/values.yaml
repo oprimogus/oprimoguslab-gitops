@@ -11,6 +11,6 @@ values: |
       existingSecretSecretKeyKey: "secret-key"
     persistence:
       enabled: true
-      existingClaim: "seaweedfs-pvc"
+      existingClaim: "nas-s3"
     networkPolicy:
       allowExternal: true
