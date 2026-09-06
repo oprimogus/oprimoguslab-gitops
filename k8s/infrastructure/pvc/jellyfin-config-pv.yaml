@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: jellyfin-config-pv
+spec:
+  capacity:
+    storage: 30Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: longhorn-retain
+  csi:
+    driver: driver.longhorn.io
+    volumeAttributes:
+      numberOfReplicas: "1"
+      staleReplicaTimeout: "20"
+    volumeHandle: pvc-34a1e0af-cb42-428d-9fbd-11019bf83aba
