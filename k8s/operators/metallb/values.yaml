@@ -1,0 +1,7 @@
+name: metallb
+repoURL: https://metallb.github.io/metallb
+targetRevision: 0.16.1
+chart: metallb
+namespace: metallb
+values: |
+  
