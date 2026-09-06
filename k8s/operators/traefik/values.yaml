@@ -6,18 +6,13 @@ namespace: traefik
 values: |
   ports:
     web:
-      redirectTo:
-        port: websecure
-        priority: 10
+      port: 80
+      # Se precisar de redirecionamento, na v41 geralmente usa-se redirection:
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
     websecure:
+      port: 443
       tls:
         enabled: true
-  providers:
-    kubernetesCRD:
-      enabled: true
-      allowCrossNamespace: true
-    kubernetesIngress:
-      enabled: true
-  ingressRoute:
-    dashboard:
-      enabled: true
