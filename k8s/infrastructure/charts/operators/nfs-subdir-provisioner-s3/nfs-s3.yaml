@@ -1,0 +1,12 @@
+name: nfs-subdir-provisioner-s3
+repoURL: https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
+targetRevision: 4.0.18
+chart: nfs-subdir-external-provisioner
+namespace: kube-system
+values: |
+  nfs:
+    server: 192.168.18.146
+    path: /backup/
+  storageClass:
+    name: nfs-s3
+    defaultClass: false
