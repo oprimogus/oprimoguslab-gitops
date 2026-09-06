@@ -7,10 +7,10 @@ values: |
   ports:
     web:
       redirections:
-        entryPoint: web
-        to: websecure
-        scheme: https
-        permanent: true
+        entryPoint:
+          to: websecure
+          scheme: https
+          permanent: true
     websecure:
       tls:
         enabled: true
