@@ -6,22 +6,17 @@ namespace: traefik
 values: |
   ports:
     web:
-      http:
-        redirections:
-          entryPoint:
-            to: websecure
-            scheme: https
-            permanent: true
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
+          permanent: true
     websecure:
-      http:
-        tls:
-          enabled: true
-  providers:
-    kubernetesCRD:
-      enabled: true
-      allowCrossNamespace: true
-    kubernetesIngress:
-      enabled: true
-  ingressRoute:
-    dashboard:
-      enabled: true
+      tls:
+        enabled: true
+        allowCrossNamespace: true
+      kubernetesIngress:
+        enabled: true
+    ingressRoute:
+      dashboard:
+        enabled: true
