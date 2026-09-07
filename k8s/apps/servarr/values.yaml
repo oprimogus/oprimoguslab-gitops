@@ -17,15 +17,15 @@ values: |
           mountPath: /media
           subPath: ""
       service:
-        type: NodePort
+        type: ClusterIP
         port: 8096
-        nodePort: "30000"
       ingress:
         enabled: true
         annotations:
           kubernetes.io/ingress.class: traefik
         hosts:
           - jellyfin.oprimoguslab.xyz
+          - jellyfin.local 
         path: /
       podSecurityContext:
         fsGroup: 1000
