@@ -5,6 +5,10 @@ chart: kube-prometheus-stack
 namespace: monitoring
 values: |
     grafana:
+      grafana.ini:
+        server:
+          domain: grafana.oprimoguslab.xyz
+          root_url: http://grafana.oprimoguslab.xyz/
       admin:
         existingSecret: kube-prometheus-stack
         userKey: grafanaAdminUser
