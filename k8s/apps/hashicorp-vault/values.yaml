@@ -66,3 +66,14 @@ values: |
 
   ui:
     enabled: true
+
+  serverTelemetry:
+    serviceMonitor:
+      enabled: true
+      selectors:
+        release: kube-prometheus-stack
+    prometheusRules:
+      enabled: true
+      selectors:
+        release: kube-prometheus-stack
+    
