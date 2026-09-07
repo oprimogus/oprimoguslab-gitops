@@ -9,7 +9,7 @@ spec:
       namespace: traefik
       sectionName: websecure
   hostnames:
-    - argocd.oprimoguslab.xyz
+    - argo.oprimoguslab.xyz
   rules:
     - matches:
         - path:
