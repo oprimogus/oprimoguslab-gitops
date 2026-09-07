@@ -8,7 +8,7 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain # Garante que os dados NÃO sejam apagados se o PVC for deletado
-  storageClassName: ""
+  storageClassName: "nfs-media"
   nfs:
     server: 192.168.18.146 # IP do seu NAS
     path: /k8s/servarr-nas-media-storage-pvc-9bca358e-e8a5-47ae-8000-3532b73535e0 # Altere para a pasta exata do NAS
