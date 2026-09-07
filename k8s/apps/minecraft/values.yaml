@@ -1,6 +1,6 @@
 name: minecraft
 repoURL: https://oprimogus.github.io/helm-charts
-targetRevision: 0.1.3
+targetRevision: 0.1.4
 chart: generic-application
 namespace: minecraft
 values: |
@@ -43,7 +43,10 @@ values: |
     
     persistence:
       enabled: true
-      existingClaim: minecraft-data
+      volumes:
+        - name: minecraft-data
+          existingClaim: minecraft-data
+          mountPath: /data
     
     service:
       enabled: true
