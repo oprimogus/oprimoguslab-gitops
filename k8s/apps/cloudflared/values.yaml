@@ -1,6 +1,6 @@
 name: cloudflared
 repoURL: https://oprimogus.github.io/helm-charts
-targetRevision: 0.1.4
+targetRevision: 0.1.5
 chart: generic-application
 namespace: cloudflared
 values: |
