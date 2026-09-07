@@ -4,4 +4,3 @@ namespace: kube-system
 resources:
   - https://raw.githubusercontent.com/traefik/traefik/v3.5/docs/content/reference/dynamic-configuration/kubernetes-gateway-rbac.yml 
   - https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.5.1/standard-install.yaml 
-  # - gateway.yaml
