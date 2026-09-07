@@ -40,6 +40,8 @@ values: |
     sonarr:
       ingress:
         enabled: true
+        annotations:
+          kubernetes.io/ingress.class: traefik
         hosts:
           - host: sonarr.oprimoguslab.xyz
             paths:
@@ -59,6 +61,8 @@ values: |
     qbittorrent:
       ingress:
         enabled: true
+        annotations:
+          kubernetes.io/ingress.class: traefik
         hosts:
           - host: qbittorrent.oprimoguslab.xyz
             paths:
@@ -88,6 +92,8 @@ values: |
     prowlarr:
       ingress:
         enabled: true
+        annotations:
+          kubernetes.io/ingress.class: traefik
         hosts:
           - host: prowlarr.oprimoguslab.xyz
             paths:
@@ -102,6 +108,8 @@ values: |
         tag: "2.7.3"
       ingress:
         enabled: true
+        annotations:
+          kubernetes.io/ingress.class: traefik
         hosts:
           - host: jellyseerr.oprimoguslab.xyz
             paths:
@@ -116,6 +124,8 @@ values: |
         tag: "1.5.6"
       ingress:
         enabled: true
+        annotations:
+          kubernetes.io/ingress.class: traefik
         hosts:
           - host: bazarr.oprimoguslab.xyz
             paths:
@@ -128,6 +138,8 @@ values: |
     radarr:
       ingress:
         enabled: true
+        annotations:
+          kubernetes.io/ingress.class: traefik
         hosts:
           - host: radarr.oprimoguslab.xyz
             paths:
@@ -147,6 +159,8 @@ values: |
     lidarr:
       ingress:
         enabled: true
+        annotations:
+          kubernetes.io/ingress.class: traefik
         hosts:
           - host: lidarr.oprimoguslab.xyz
             paths:
@@ -158,6 +172,8 @@ values: |
     flaresolverr:
       ingress:
         enabled: true
+        annotations:
+          kubernetes.io/ingress.class: traefik
         hosts:
           - host: flaresolverr.oprimoguslab.xyz
             paths:
@@ -168,6 +184,8 @@ values: |
       enabled: false
       ingress:
         enabled: true
+        annotations:
+          kubernetes.io/ingress.class: traefik
         hosts:
           - host: cleanuparr.oprimoguslab.xyz
             paths:
