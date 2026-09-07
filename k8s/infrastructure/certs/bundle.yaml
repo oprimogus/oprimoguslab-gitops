@@ -29,3 +29,4 @@ spec:
             - zitadel
             - infrastructure
             - nextcloud
+            - cloudflared 
