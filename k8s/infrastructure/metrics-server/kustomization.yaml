@@ -3,4 +3,12 @@ kind: Kustomization
 namespace: kube-system
 resources:
   - https://raw.githubusercontent.com/alex1989hu/kubelet-serving-cert-approver/main/deploy/standalone-install.yaml
-  # - https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+  - aggregated-metrics-reader-cluster-role.yaml
+  - api-service.yaml
+  - auth-reader-role-binding.yaml
+  - metrics-server.yaml
+  - metrics-server-auth-clusterrolebinding.yaml
+  - metrics-server-clusterrole.yaml
+  - metrics-server-clusterrolebinding.yaml
+  - service.yaml
+  - service-account.yaml
