@@ -1,6 +1,6 @@
 name: descheduler-operator
-repoURL: oci://ghcr.io/quenchworks/charts
-targetRevision: 0.0.8
+repoURL: https://kubernetes-sigs.github.io/descheduler/
+targetRevision: 0.36.0
 chart: descheduler
 namespace: descheduler-system
 values: |
