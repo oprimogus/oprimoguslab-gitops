@@ -1,5 +1,5 @@
 name: descheduler-operator
-repoURL: oci://ghcr.io/quenchworks/charts/
+repoURL: oci://ghcr.io/quenchworks/charts
 targetRevision: 0.0.8
 chart: descheduler
 namespace: descheduler-system
