@@ -22,6 +22,8 @@ values: |
         nodePort: "30000"
       ingress:
         enabled: true
+        annotations:
+          kubernetes.io/ingress.class: traefik
         hosts:
           - jellyfin.oprimoguslab.xyz
         path: /
