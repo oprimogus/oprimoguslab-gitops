@@ -25,7 +25,7 @@ values: |
           kubernetes.io/ingress.class: traefik
         hosts:
           - jellyfin.oprimoguslab.xyz
-          - jellyfin.local 
+          - jellyfin.internal.oprimoguslab.xyz
         path: /
       podSecurityContext:
         fsGroup: 1000
