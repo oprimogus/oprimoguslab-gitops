@@ -13,7 +13,7 @@ values: |
           existingClaim: "jellyfin-config-pvc"
         media:
           enabled: true
-          existingClaim: "nas-media-storage"
+          existingClaim: "nas-media-storage-2"
           mountPath: /media
           subPath: ""
       service:
