@@ -13,11 +13,11 @@ values: |
     
     resources:
       min:
-        cpu: 500m
-        memory: 1Gi
-      max:
-        cpu: 4000m
+        cpu: 2
         memory: 4Gi
+      max:
+        cpu: 6
+        memory: 8Gi
       autoscaling:
         enable: false
     
