@@ -19,7 +19,7 @@ values: |
         cpu: 6
         memory: 8Gi
       autoscaling:
-        enable: false
+        enable: true
     
     env:
        MEMORY: 4G
