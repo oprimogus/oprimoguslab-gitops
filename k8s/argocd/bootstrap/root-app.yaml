@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: 'https://github.com/oprimogus/oprimoguslab-gitops.git'
-    targetRevision: talos
+    targetRevision: main
     path: k8s/argocd/applicationsets
     directory:
       recurse: true
