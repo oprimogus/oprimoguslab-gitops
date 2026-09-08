@@ -17,7 +17,7 @@ spec:
       project: infrastructure
       source:
         repoURL: https://github.com/oprimogus/oprimoguslab-gitops.git
-        targetRevision: talos
+        targetRevision: main
         path: '{{path}}'
       destination:
         server: https://kubernetes.default.svc
