@@ -7,7 +7,7 @@ spec:
   generators:
     - git:
         repoURL: https://github.com/oprimogus/oprimoguslab-gitops.git
-        revision: talos
+        revision: main
         directories:
           - path: k8s/infrastructure/*
   template:
