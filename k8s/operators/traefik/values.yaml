@@ -16,6 +16,10 @@ values: |
       http:
         tls:
           enabled: true
+    teamspeak-voice:
+      port: 9987
+      expose: true
+      protocol: UDP
   providers:
     kubernetesCRD:
       enabled: true
@@ -40,9 +44,3 @@ values: |
         certificateRefs:
             - name: cert-tls
         mode: Terminate
-      teamspeak-voice:
-        namespacePolicy:
-          from: All
-        port: 9987
-        expose: true
-        protocol: UDP
