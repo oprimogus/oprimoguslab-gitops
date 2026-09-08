@@ -41,6 +41,8 @@ values: |
             - name: cert-tls
         mode: Terminate
       teamspeak-voice:
+        namespacePolicy:
+          from: All
         port: 9987
         expose: true
         protocol: UDP
