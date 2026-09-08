@@ -60,10 +60,10 @@ values: |
         resources:
           min:
             cpu: 200m
-            memory: 128Mi
+            memory: 256Mi
           max:
             cpu: 400m
-            memory: 256Mi
+            memory: 512Mi
           autoscaling:
             enable: false
         
