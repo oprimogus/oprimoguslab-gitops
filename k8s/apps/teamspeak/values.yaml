@@ -1,0 +1,76 @@
+name: teamspeak
+repoURL: https://oprimogus.github.io/helm-charts
+targetRevision: 0.1.6
+chart: generic-application
+namespace: teamspeak
+values: |
+    name: teamspeak
+    
+    image:
+      repository: teamspeak
+      tag: 3.13.8
+      pullPolicy: IfNotPresent
+    
+    resources:
+      min:
+        cpu: 1
+        memory: 1Gi
+      max:
+        cpu: 2
+        memory: 2Gi
+      autoscaling:
+        enable: false
+    
+    env:
+      TS3SERVER_DB_PLUGIN: ts3db_mariadb
+      TS3SERVER_DB_SQLCREATEPATH: create_mariadb
+      TS3SERVER_DB_HOST: db
+      TS3SERVER_DB_USER: root
+      TS3SERVER_DB_PASSWORD: example
+      TS3SERVER_DB_NAME: teamspeak
+      TS3SERVER_DB_WAITUNTILREADY: 30
+      TS3SERVER_LICENSE: accept
+    
+    persistence:
+      enabled: true
+      volumes:
+        - name: minecraft-data
+          existingClaim: minecraft-data
+          mountPath: /data
+    
+    service:
+      enabled: true
+      type: ClusterIP
+      ports:
+        - name: minecraft
+          port: 25565
+          targetPort: 25565
+          protocol: TCP
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: traefik
+    
+    sidecars:
+      - name: playitgg
+        environment: prd
+        
+        image:
+          repository: ghcr.io/playit-cloud/playit-agent
+          tag: 0.16
+          pullPolicy: IfNotPresent
+        
+        resources:
+          min:
+            cpu: 200m
+            memory: 128Mi
+          max:
+            cpu: 400m
+            memory: 256Mi
+          autoscaling:
+            enable: false
+        
+        secrets:
+          - name: SECRET_KEY
+            secret: playitgg
+            key: secretKey
