@@ -29,9 +29,13 @@ spec:
     serverCASecret: certs-bundle
     clientCASecret: certs-bundle
   storage:
-    # Tipo de Storage; Longhorn usado para permitir resize sem excluir o cluster
-    storageClass: longhorn-retain
-    # Size define o tamanho de cada  instancia. Exemplo: 40Gi x 3 instances = 120Gi
-    size: 50Gi
+    pvcTemplate:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 50Gi
+      storageClassName: longhorn-retain
+      volumeName: cnpg-cluster-pv
   monitoring:
     enablePodMonitor: true
