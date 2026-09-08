@@ -49,6 +49,11 @@ values: |
           targetPort: 30033
           protocol: TCP
     ingress:
-      enabled: true
+      enabled: false
       annotations:
         kubernetes.io/ingress.class: traefik
+      hosts:
+        - teamspeak.oprimoguslab.xyz
+    httpRoute:
+      enabled: false
+      
