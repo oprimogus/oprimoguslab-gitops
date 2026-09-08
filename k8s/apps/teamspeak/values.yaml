@@ -51,7 +51,6 @@ values: |
 
     sidecars:
       - name: playitgg
-        environment: prd
         
         image:
           repository: ghcr.io/playit-cloud/playit-agent
