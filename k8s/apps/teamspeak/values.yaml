@@ -30,6 +30,7 @@ values: |
       # TS3SERVER_DB_NAME: teamspeak
       # TS3SERVER_DB_WAITUNTILREADY: 30
       TS3SERVER_LICENSE: accept
+      TSSERVER_LICENSE_ACCEPTED: accept
     
    
     service:
