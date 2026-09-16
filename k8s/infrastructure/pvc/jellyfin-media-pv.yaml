@@ -4,7 +4,7 @@ metadata:
   name: nas-media-storage-pv
 spec:
   capacity:
-    storage: 3600Gi # Ajuste para o tamanho desejado
+    storage: 7200Gi # Ajuste para o tamanho desejado
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain # Garante que os dados NÃO sejam apagados se o PVC for deletado
