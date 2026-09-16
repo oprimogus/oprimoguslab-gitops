@@ -10,4 +10,4 @@ spec:
     requests:
       storage: 7200Gi
   storageClassName: nfs-media
-  volumeName: nas-media-storage-pv
+  volumeName: nas-media-storage-pv-2
