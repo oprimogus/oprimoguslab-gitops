@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: nas-media-storage-2
+  name: nas-media-storage
   namespace: servarr
 spec:
   accessModes:
     - ReadWriteMany
   resources:
     requests:
-      storage: 3600Gi
+      storage: 7200Gi
   storageClassName: nfs-media
   volumeName: nas-media-storage-pv
