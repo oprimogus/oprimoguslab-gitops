@@ -6,6 +6,7 @@ namespace: servarr
 values: |
     jellyfin:
       image:
+        repository: jellyfin/jellyfin
         tag: "12.1"
       persistence:
         config:
