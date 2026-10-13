@@ -25,6 +25,16 @@ values: |
         minReplicas: 1
         maxReplicas: 2
 
+    service:
+      enabled: true
+      type: ClusterIP
+      ports:
+        - 4000
+    ingress:
+      enabled: true
+      host: intimai.oprimoguslab.xyz
+      ingressClassName: traefik
+
     env:
     secrets:
       - name: SECRET_KEY_BASE
