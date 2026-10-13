@@ -22,8 +22,8 @@ values: |
         memory: 256Mi
       autoscaling:
         enable: true
-        minReplicas: 1
-        maxReplicas: 2
+        minReplicas: 0
+        maxReplicas: 0
 
     env:
     secrets:
