@@ -1,52 +1,52 @@
-name: intimai
-repoURL: https://oprimogus.github.io/helm-charts
-targetRevision: 0.1.6
-chart: generic-application
-namespace: intimai
-values: |
-    name: intimai
-    
-    image:
-      repository: ghcr.io/cupula-do-odio/intimai-api-main
-      tag: latest
-      pullPolicy: Always
-      pullSecrets:
-        - github-container-registry
-    
-    resources:
-      min:
-        cpu: 100m
-        memory: 128Mi
-      max:
-        cpu: 500m
-        memory: 256Mi
-      autoscaling:
-        enable: true
-        minReplicas: 1
-        maxReplicas: 2
-
-    env:
-    secrets:
-      - name: SECRET_KEY_BASE
-        secret: intimai
-        key: SECRET_KEY_BASE
-
-      - name: DATABASE_URL
-        secret: intimai
-        key: DATABASE_URL
-
-      - name: DEEPSEEK_API_KEY
-        secret: intimai
-        key: DEEPSEEK_API_KEY
-
-      - name: BAZAARLINK_API_KEY
-        secret: intimai
-        key: BAZAARLINK_API_KEY
-
-      - name: INTIMAI_DM_PROVIDER
-        secret: intimai
-        key: INTIMAI_DM_PROVIDER
-
-      - name: INTIMAI_DM_MODEL
-        secret: intimai
-        key: INTIMAI_DM_MODEL
+# name: intimai
+# repoURL: https://oprimogus.github.io/helm-charts
+# targetRevision: 0.1.6
+# chart: generic-application
+# namespace: intimai
+# values: |
+#     name: intimai
+#     
+#     image:
+#       repository: ghcr.io/cupula-do-odio/intimai-api-main
+#       tag: latest
+#       pullPolicy: Always
+#       pullSecrets:
+#         - github-container-registry
+#     
+#     resources:
+#       min:
+#         cpu: 100m
+#         memory: 128Mi
+#       max:
+#         cpu: 500m
+#         memory: 256Mi
+#       autoscaling:
+#         enable: true
+#         minReplicas: 1
+#         maxReplicas: 2
+# 
+#     env:
+#     secrets:
+#       - name: SECRET_KEY_BASE
+#         secret: intimai
+#         key: SECRET_KEY_BASE
+# 
+#       - name: DATABASE_URL
+#         secret: intimai
+#         key: DATABASE_URL
+# 
+#       - name: DEEPSEEK_API_KEY
+#         secret: intimai
+#         key: DEEPSEEK_API_KEY
+# 
+#       - name: BAZAARLINK_API_KEY
+#         secret: intimai
+#         key: BAZAARLINK_API_KEY
+# 
+#       - name: INTIMAI_DM_PROVIDER
+#         secret: intimai
+#         key: INTIMAI_DM_PROVIDER
+# 
+#       - name: INTIMAI_DM_MODEL
+#         secret: intimai
+#         key: INTIMAI_DM_MODEL
