@@ -23,6 +23,12 @@ spec:
       createrole: true
       passwordSecret:
         name: zitadel-db
+    - name: intimai
+      login: true
+      createdb: true
+      createrole: true
+      passwordSecret:
+        name: intimai-db
   certificates:
     serverTLSSecret: postgres-cluster-cert
     replicationTLSSecret: postgres-cluster-client-cert

@@ -1,0 +1,10 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: intimai-db
+  namespace: cnpg
+spec:
+  name: intimai
+  owner: intimai
+  cluster:
+    name: postgres-cluster
