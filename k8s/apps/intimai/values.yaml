@@ -10,6 +10,8 @@ values: |
       repository: ghcr.io/cupula-do-odio/intimai-api-main
       tag: latest
       pullPolicy: Always
+      pullSecrets:
+        - github-container-registry
     
     resources:
       min:
