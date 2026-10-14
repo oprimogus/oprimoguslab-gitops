@@ -1,6 +1,6 @@
 name: intimai
 repoURL: https://oprimogus.github.io/helm-charts
-targetRevision: 0.1.6
+targetRevision: 0.1.8
 chart: generic-application
 namespace: intimai
 values: |
