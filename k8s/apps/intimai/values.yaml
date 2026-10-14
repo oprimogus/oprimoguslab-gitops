@@ -38,6 +38,7 @@ values: |
       host: intimai.oprimoguslab.xyz
 
     env:
+      PHX_HOST: intimai.oprimoguslab.xyz
     secrets:
       - name: SECRET_KEY_BASE
         secret: intimai
