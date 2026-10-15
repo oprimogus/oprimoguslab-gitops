@@ -33,7 +33,7 @@ values: |
           protocol: TCP 
     httpRoute:
       enabled: true
-      host: intimai.oprimoguslab.xyz
+      host: st.oprimoguslab.xyz
 
     env:
       NODE_ENV: production
