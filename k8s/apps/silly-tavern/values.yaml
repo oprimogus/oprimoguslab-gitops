@@ -1,0 +1,41 @@
+name: silly-tavern
+repoURL: https://oprimogus.github.io/helm-charts
+targetRevision: 0.1.9
+chart: generic-application
+namespace: silly-tavern
+values: |
+    name: silly-tavern
+    
+    image:
+      repository: ghcr.io/sillytavern/sillytavern
+      tag: 1.19.0
+      pullPolicy: Always
+    
+    resources:
+      min:
+        cpu: 100m
+        memory: 256Mi
+      max:
+        cpu: 500m
+        memory: 512Mi
+      autoscaling:
+        enable: true
+        minReplicas: 1
+        maxReplicas: 2
+
+    service:
+      enabled: true
+      type: ClusterIP
+      ports:
+        - name: server
+          port: 80
+          targetPort: 8000
+          protocol: TCP 
+    httpRoute:
+      enabled: true
+      host: intimai.oprimoguslab.xyz
+
+    env:
+      NODE_ENV: production
+      FORCE_COLOR: 1
+      SILLYTAVERN_HEARTBEATINTERVAL: 30
