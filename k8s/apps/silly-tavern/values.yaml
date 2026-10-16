@@ -41,6 +41,10 @@ values: |
       SILLYTAVERN_HEARTBEATINTERVAL: 30
       SILLYTAVERN_WHITELISTMODE: false
       SILLYTAVERN_BASICAUTHMODE: true
+      CONFIG_PATH: "/data/config"
+      DATA_PATH: "/data/data"
+      PLUGINS_PATH: "/data/plugins"
+      EXTENSIONS_PATH: "/data/extensions"
     secrets:
       - name: SILLYTAVERN_BASICAUTHUSER_USERNAME
         secret: silly-tavern
@@ -49,3 +53,10 @@ values: |
       - name: SILLYTAVERN_BASICAUTHUSER_PASSWORD
         secret: silly-tavern
         key: SILLYTAVERN_BASICAUTHUSER_PASSWORD
+
+    persistence:
+      enabled: true
+      volumes:
+        - name: silly-tavern-data
+          existingClaim: silly-tavern-pvc
+          mountPath: /data
