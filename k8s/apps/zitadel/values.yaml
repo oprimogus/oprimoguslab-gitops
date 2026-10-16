@@ -1,6 +1,6 @@
 name: zitadel
 repoURL: 'https://charts.zitadel.com'
-targetRevision: 8.13.1
+targetRevision: 10.4.0  # Nova versão do chart
 chart: zitadel
 namespace: zitadel
 values: |
@@ -34,13 +34,13 @@ values: |
     dbSslCaCrtSecret: certs-bundle
     dbSslAdminCrtSecret: postgres-cluster-client-cert
     dbSslUserCrtSecret: postgres-cluster-client-cert
+
+  # Ingress Principal do ZITADEL (API, gRPC, etc)
   ingress:
     enabled: true
     className: traefik
     annotations:
       kubernetes.io/ingress.class: traefik
-      # traefik.ingress.kubernetes.io/router.entrypoints: websecure
-      # traefik.ingress.kubernetes.io/router.tls: "true"
     hosts:
       - host: auth.oprimoguslab.xyz
         paths:
@@ -50,3 +50,21 @@ values: |
       - hosts:
           - auth.oprimoguslab.xyz
         secretName: cert-tls
+
+  # NOVO: Ingress exclusivo para o Frontend de Login UI (v10+)
+  login:
+    enabled: true
+    ingress:
+      enabled: true
+      className: traefik
+      annotations:
+        kubernetes.io/ingress.class: traefik
+      hosts:
+        - host: auth.oprimoguslab.xyz
+          paths:
+            - path: /ui/v2/login
+              pathType: Prefix
+      tls:
+        - hosts:
+            - auth.oprimoguslab.xyz
+          secretName: cert-tls
