@@ -39,3 +39,13 @@ values: |
       NODE_ENV: production
       FORCE_COLOR: 1
       SILLYTAVERN_HEARTBEATINTERVAL: 30
+      SILLYTAVERN_WHITELISTMODE: false
+      SILLYTAVERN_BASICAUTHMODE: true
+    secrets:
+      - name: SILLYTAVERN_BASICAUTHUSER_USERNAME
+        secret: silly-tavern
+        key: SILLYTAVERN_BASICAUTHUSER_USERNAME
+
+      - name: SILLYTAVERN_BASICAUTHUSER_PASSWORD
+        secret: silly-tavern
+        key: SILLYTAVERN_BASICAUTHUSER_PASSWORD
