@@ -4,8 +4,8 @@ metadata:
   name: postgres-cluster-backup-daily
   namespace: cnpg
 spec:
-  # Exemplo: Todo dia às 03:00 da manhã
-  schedule: "0 3 * * *"
+  # Exemplo: Todo dia às 03:00 da manhã Brasil
+  schedule: "0 0 6 * * *"
   backupOwnerReference: self
   cluster:
     name: postgres-cluster
