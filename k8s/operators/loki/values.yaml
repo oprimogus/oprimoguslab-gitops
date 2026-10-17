@@ -9,9 +9,9 @@ values: |
     loki:
       commonConfig:
         replication_factor: 1
-          ring:
-            kvstore:
-              store: inmemory
+        ring:
+          kvstore:
+            store: inmemory
       auth_enabled: false
       commonConfig:
         replication_factor: 1
