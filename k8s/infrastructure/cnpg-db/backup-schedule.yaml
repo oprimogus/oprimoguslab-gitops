@@ -1,0 +1,17 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: ScheduledBackup
+metadata:
+  name: postgres-cluster-backup-diario
+  namespace: cnpg
+spec:
+  # Exemplo: Todo dia às 03:00 da manhã
+  schedule: "0 3 * * *"
+  backupOwnerReference: self
+  cluster:
+    name: postgres-cluster
+  # As 5 linhas abaixo são a novidade exigida pelo plugin:
+  method: plugin
+  pluginConfiguration:
+    name: barman-cloud.cloudnative-pg.io
+    parameters:
+      barmanObjectName: s3-store
