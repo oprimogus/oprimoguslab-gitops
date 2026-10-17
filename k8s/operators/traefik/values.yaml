@@ -39,4 +39,6 @@ values: |
             from: All
         certificateRefs:
             - name: cert-tls
+              group: ''
+              kind: Secret  
         mode: Terminate
