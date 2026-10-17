@@ -47,4 +47,7 @@ values: |
         passwordKey: db-password
         hostKey: db-host
         databaseKey: db-database
+    persistence:
+      enabled: true
+      existingClaim: nextcloud-pvc
             
