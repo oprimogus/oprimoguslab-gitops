@@ -16,4 +16,4 @@ spec:
                 key: AWS_SECRET_ACCESS_KEY
         wal:
             compression: gzip
-        retentionPolicy: "14d"
+    retentionPolicy: "14d"
