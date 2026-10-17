@@ -1,0 +1,61 @@
+name: loki
+repoURL: https://grafana.github.io/helm-charts
+targetRevision: 18.17.0
+chart: loki
+namespace: monitoring
+values: |
+    deploymentMode: Monolithic
+    
+    loki:
+      auth_enabled: false
+      commonConfig:
+        replication_factor: 1
+      schemaConfig:
+        configs:
+          - from: "2024-01-01"
+            store: tsdb
+            object_store: s3
+            schema: v13
+            index:
+              prefix: index_
+              period: 24h
+      storage:
+        type: s3
+        bucketNames:
+          chunks: loki-data
+          ruler: loki-ruler
+        s3:
+          endpoint: http://seaweedfs.seaweedfs.svc.cluster.local:8333
+          region: us-east-1
+          s3ForcePathStyle: true
+          insecure: true
+      limits_config:
+        retention_period: 744h   # 31 dias
+      compactor:
+        working_directory: /var/loki/compactor
+        retention_enabled: true
+        delete_request_store: s3
+    
+    singleBinary:
+      replicas: 1
+      extraEnvFrom:
+        - secretRef:
+            name: seaweedfs   # chaves: AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
+      resources:
+        requests: { cpu: 200m, memory: 512Mi }
+        limits:   { memory: 1Gi }
+      persistence:
+        enabled: true
+        size: 10Gi
+        storageClass: longhorn-retain
+      podDisruptionBudget:
+        enabled: false
+    
+    chunksCache:
+      enabled: false
+    resultsCache:
+      enabled: false
+    lokiCanary:
+      enabled: false
+    test:
+      enabled: false
