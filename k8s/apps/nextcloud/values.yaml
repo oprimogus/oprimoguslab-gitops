@@ -9,6 +9,7 @@ values: |
       hostnames:
         - drive.oprimoguslab.xyz
     nextcloud:
+      host: drive.oprimoguslab.xyz
       existingSecret:
         enabled: true
         secretName: nextcloud
