@@ -5,7 +5,7 @@ metadata:
     namespace: cnpg
 spec:
     configuration:
-        destinationPath: s3://cnpg-backup@us-east-1/
+        destinationPath: s3://cnpg-backup/
         endpointURL: https://554de8cc38b04a6604fd75d0847841b3.r2.cloudflarestorage.com
         s3Credentials:
             accessKeyId:
