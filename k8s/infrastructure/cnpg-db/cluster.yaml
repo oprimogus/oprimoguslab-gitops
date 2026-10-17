@@ -54,7 +54,7 @@ spec:
 
   postgresql:
     parameters:
-    shared_buffers: "256MB"
+      shared_buffers: "256MB"
 
   resources:
     requests:
