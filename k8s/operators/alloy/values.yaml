@@ -1,0 +1,7 @@
+name: grafana-alloy
+repoURL: https://grafana.github.io/helm-charts
+targetRevision: 0.8.0
+chart: alloy-operator
+namespace: monitoring
+values: |
+    

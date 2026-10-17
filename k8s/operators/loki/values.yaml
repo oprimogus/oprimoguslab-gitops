@@ -1,4 +1,4 @@
-name: loki
+name: grafana-loki
 repoURL: https://grafana-community.github.io/helm-charts/
 targetRevision: 18.17.0
 chart: loki
