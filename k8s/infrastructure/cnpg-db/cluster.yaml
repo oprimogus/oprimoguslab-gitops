@@ -29,6 +29,12 @@ spec:
       createrole: true
       passwordSecret:
         name: intimai-db
+    - name: nextcloud
+      login: true
+      createdb: true
+      createrole: true
+      passwordSecret:
+        name: nextcloud-db
 
   plugins:
     - name: barman-cloud.cloudnative-pg.io
