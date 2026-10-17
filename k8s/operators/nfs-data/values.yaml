@@ -1,4 +1,4 @@
-name: nfs-subdir-provisioner-s3
+name: nfs-subdir-provisioner-data
 repoURL: https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
 targetRevision: 4.0.18
 chart: nfs-subdir-external-provisioner
@@ -8,5 +8,5 @@ values: |
     server: 192.168.18.146
     path: /export/data/
   storageClass:
-    name: nfs-s3
+    name: nfs-data
     defaultClass: false
