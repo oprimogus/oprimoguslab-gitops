@@ -29,11 +29,13 @@ spec:
       createrole: true
       passwordSecret:
         name: intimai-db
+
   certificates:
     serverTLSSecret: postgres-cluster-cert
     replicationTLSSecret: postgres-cluster-client-cert
     serverCASecret: certs-bundle
     clientCASecret: certs-bundle
+
   storage:
     pvcTemplate:
       accessModes:
@@ -43,5 +45,18 @@ spec:
           storage: 50Gi
       storageClassName: longhorn-retain
       volumeName: cnpg-cluster-pv
+
   monitoring:
     enablePodMonitor: true
+
+  postgresql:
+    parameters:
+    shared_buffers: "256MB"
+
+  resources:
+    requests:
+      memory: "1024Mi"
+      cpu: 1
+    limits:
+      memory: "4096Mi"
+      cpu: 4

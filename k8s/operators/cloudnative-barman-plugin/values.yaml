@@ -1,0 +1,5 @@
+namespace: cnpg-system
+repoURL: https://cloudnative-pg.io/charts/
+targetRevision: 0.8.1
+chart: cloudnative-pg/plugin-barman-cloud
+values: |
