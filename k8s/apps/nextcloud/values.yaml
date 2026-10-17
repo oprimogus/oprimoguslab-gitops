@@ -33,7 +33,7 @@ values: |
             host: AWS_ENDPOINTS
             accessKey: AWS_ACCESS_KEY_ID
             secretKey: AWS_SECRET_ACCESS_KEY
-            bucket: bucket
+            bucket: nextcloud-bucket
 
     internalDatabase:
       enabled: false
