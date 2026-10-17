@@ -1,7 +1,7 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: ScheduledBackup
 metadata:
-  name: postgres-cluster-backup-diario
+  name: postgres-cluster-backup-daily
   namespace: cnpg
 spec:
   # Exemplo: Todo dia às 03:00 da manhã

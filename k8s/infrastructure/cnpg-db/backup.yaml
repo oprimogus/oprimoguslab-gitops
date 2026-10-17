@@ -2,6 +2,7 @@ apiVersion: postgresql.cnpg.io/v1
 kind: Backup
 metadata:
   name: backup-postgres-cluster
+  namespace: cnpg
 spec:
   cluster:
     name: postgres-cluster
