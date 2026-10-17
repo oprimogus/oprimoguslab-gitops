@@ -6,7 +6,7 @@ namespace: kube-system
 values: |
   nfs:
     server: 192.168.18.146
-    path: /export/data/s3
+    path: /export/data/
   storageClass:
     name: nfs-s3
     defaultClass: false
