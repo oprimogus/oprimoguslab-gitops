@@ -30,6 +30,12 @@ spec:
       passwordSecret:
         name: intimai-db
 
+  plugins:
+    - name: barman-cloud.cloudnative-pg.io
+      isWALArchiver: true
+      parameters:
+        barmanObjectName: s3-store
+
   certificates:
     serverTLSSecret: postgres-cluster-cert
     replicationTLSSecret: postgres-cluster-client-cert
