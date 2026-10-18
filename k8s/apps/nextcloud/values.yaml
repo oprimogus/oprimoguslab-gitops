@@ -39,7 +39,7 @@ values: |
           port: "8333"
           usePathStyle: true
           region: us-east-1
-          autoCreate: true
+          autoCreate: false
           existingSecret: nextcloud
           secretKeys:
             host: AWS_ENDPOINTS
