@@ -37,6 +37,7 @@ values: |
           enabled: true
           ssl: false
           port: "8333"
+          usePathStyle: true
           region: us-east-1
           autoCreate: true
           existingSecret: nextcloud
