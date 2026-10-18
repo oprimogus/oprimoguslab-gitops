@@ -24,6 +24,8 @@ values: |
         smtpUsernameKey: smtp-username
         smtpPasswordKey: smtp-password
         smtpHostKey: smtp-host
+      trustedDomains:
+        - drive.oprimoguslab.xyz
       mail:
         enabled: true
         fromAddress: user
