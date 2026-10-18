@@ -35,7 +35,8 @@ values: |
       objectStore:
         s3:
           enabled: true
-          ssl: true
+          ssl: false
+          port: "8333"
           region: us-east-1
           autoCreate: true
           existingSecret: nextcloud
