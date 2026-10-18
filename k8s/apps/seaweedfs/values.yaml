@@ -1,16 +1,28 @@
 name: seaweedfs
-repoURL: oci://ghcr.io/quenchworks/charts/seaweedfs
-targetRevision: 0.0.19
+repoURL: https://seaweedfs.github.io/seaweedfs/helm
+targetRevision: 4.48.0
 chart: seaweedfs
 namespace: seaweedfs
 values: |
-    auth:
+    master:
+      volumeSizeLimitMB: 1024
+    
+    allInOne:
       enabled: true
-      existingSecret: "seaweedfs"
-      existingSecretAccessKeyKey: "access-key"
-      existingSecretSecretKeyKey: "secret-key"
-    persistence:
-      enabled: true
-      existingClaim: seaweedfs-pvc
-    networkPolicy:
-      allowExternal: true
+      extraArgs:
+        - -volume.max=0
+        - -master.volumeSizeLimitMB=1024
+      data:
+        type: existingClaim
+        claimName: seaweedfs-pvc
+      s3:
+        enabled: true
+        enableAuth: true
+    
+    s3:
+      enableAuth: true
+      credentials:
+        admin:
+          existingSecret: seaweedfs
+          accessKeyKey: access-key
+          secretKeyKey: secret-key
