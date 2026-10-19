@@ -122,8 +122,6 @@ values: |
 
     seerr:
       enabled: true
-      image:
-        tag: "2.7.3"
       ingress:
         enabled: true
         annotations:
