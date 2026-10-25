@@ -22,10 +22,10 @@ values: |
         claimName: seaweedfs-pvc
       s3:
         enabled: true
-        enableAuth: true
+        enableAuth: false
     
     s3:
-      enableAuth: true
+      enableAuth: false
       credentials:
         admin:
           existingSecret: seaweedfs
