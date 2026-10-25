@@ -47,13 +47,6 @@ values: |
             disable_hostname = true
           }
 
-    dataStorage:
-      enabled: true
-      size: 2Gi
-      mountPath: "/vault/data"
-      storageClass: "longhorn-retain"
-      accessMode: ReadWriteOnce
-
     affinity: |
       nodeAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
