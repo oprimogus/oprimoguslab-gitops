@@ -9,10 +9,10 @@ spec:
         endpointURL: https://554de8cc38b04a6604fd75d0847841b3.r2.cloudflarestorage.com
         s3Credentials:
             accessKeyId:
-                name: cloudflare-r2
+                name: r2-cnpg-backup
                 key: AWS_ACCESS_KEY_ID
             secretAccessKey:
-                name: cloudflare-r2
+                name: r2-cnpg-backup
                 key: AWS_SECRET_ACCESS_KEY
         wal:
             compression: gzip
