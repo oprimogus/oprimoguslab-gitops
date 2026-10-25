@@ -12,7 +12,6 @@ spec:
   storageClassName: longhorn-retain
   csi:
     driver: driver.longhorn.io
-    fsType: ext4
     volumeAttributes:
       numberOfReplicas: "1"
       staleReplicaTimeout: "20"
