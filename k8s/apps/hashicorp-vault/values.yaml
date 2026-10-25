@@ -8,6 +8,17 @@ values: |
     enabled: true
     dev:
       enabled: false
+    dataStorage:
+      enabled: false
+    
+    volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: vault-data   # o seu PVC existente
+    
+    volumeMounts:
+      - name: data
+        mountPath: /vault/data
 
     ha:
       enabled: true
