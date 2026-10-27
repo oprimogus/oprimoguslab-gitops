@@ -47,33 +47,33 @@ values: |
             disable_hostname = true
           }
 
-    affinity: |
-      nodeAffinity:
-        preferredDuringSchedulingIgnoredDuringExecution:
-        - weight: 100
-          preference:
-            matchExpressions:
-            - key: location
-              operator: In
-              values:
-              - oracle
-      podAntiAffinity:
-        preferredDuringSchedulingIgnoredDuringExecution:
-        - weight: 100
-          podAffinityTerm:
-            labelSelector:
-              matchLabels:
-                component: server
-            topologyKey: kubernetes.io/hostname
+    # affinity: |
+    #   nodeAffinity:
+    #     preferredDuringSchedulingIgnoredDuringExecution:
+    #     - weight: 100
+    #       preference:
+    #         matchExpressions:
+    #         - key: location
+    #           operator: In
+    #           values:
+    #           - oracle
+    #   podAntiAffinity:
+    #     preferredDuringSchedulingIgnoredDuringExecution:
+    #     - weight: 100
+    #       podAffinityTerm:
+    #         labelSelector:
+    #           matchLabels:
+    #             component: server
+    #         topologyKey: kubernetes.io/hostname
 
-    topologySpreadConstraints:
-      - maxSkew: 1
-        topologyKey: "kubernetes.io/hostname"
-        whenUnsatisfiable: ScheduleAnyway
-        labelSelector:
-          matchLabels:
-            app.kubernetes.io/name: vault
-            component: server
+    # topologySpreadConstraints:
+    #   - maxSkew: 1
+    #     topologyKey: "kubernetes.io/hostname"
+    #     whenUnsatisfiable: ScheduleAnyway
+    #     labelSelector:
+    #       matchLabels:
+    #         app.kubernetes.io/name: vault
+    #         component: server
 
   ui:
     enabled: true
