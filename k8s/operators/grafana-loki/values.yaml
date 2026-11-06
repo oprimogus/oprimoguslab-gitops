@@ -29,6 +29,7 @@ values: |
         bucketNames:
           chunks: loki-data
           ruler: loki-ruler
+          admin: loki-admin
         s3:
           endpoint: http://seaweedfs-all-in-one.seaweedfs.svc.cluster.local:8333 
           region: us-east-1
@@ -39,7 +40,7 @@ values: |
       compactor:
         working_directory: /var/loki/compactor
         retention_enabled: true
-        delete_request_store: s3
+        delete_request_store: ''
     
     singleBinary:
       replicas: 1
@@ -71,3 +72,5 @@ values: |
       enabled: false
     test:
       enabled: false
+    gateway:
+      enabled: true
