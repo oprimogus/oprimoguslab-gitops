@@ -12,8 +12,6 @@ values: |
         ring:
           kvstore:
             store: inmemory
-      memberlist:
-        join_members: []
       auth_enabled: false
       commonConfig:
         replication_factor: 1
@@ -39,6 +37,8 @@ values: |
           insecure: true
       limits_config:
         retention_period: 744h   # 31 dias
+      memberlist:
+        join_members: []
       compactor:
         working_directory: /var/loki/compactor
         retention_enabled: true
