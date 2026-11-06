@@ -42,7 +42,7 @@ values: |
       compactor:
         working_directory: /var/loki/compactor
         retention_enabled: true
-        delete_request_store: ''
+        delete_request_store: s3
     
     singleBinary:
       replicas: 1
