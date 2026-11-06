@@ -22,10 +22,10 @@ values: |
           MaxConnIdleTime: 5m
           User:
             SSL:
-              Mode: verify-full
+              Mode: verify-ca
           Admin:
             SSL:
-              Mode: verify-full
+              Mode: verify-ca
     debug:
       enabled: true
       annotations:
