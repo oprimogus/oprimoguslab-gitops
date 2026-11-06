@@ -12,6 +12,8 @@ values: |
         ring:
           kvstore:
             store: inmemory
+      memberlist:
+        join_members: []
       auth_enabled: false
       commonConfig:
         replication_factor: 1
