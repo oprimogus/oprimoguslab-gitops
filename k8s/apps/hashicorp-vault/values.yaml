@@ -14,7 +14,7 @@ values: |
     volumes:
       - name: data
         persistentVolumeClaim:
-          claimName: vault-data   # o seu PVC existente
+          claimName: vault-data-2   # o seu PVC existente
     
     volumeMounts:
       - name: data
