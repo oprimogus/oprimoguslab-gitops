@@ -10,3 +10,4 @@ spec:
     requests:
       storage: 4Gi
   storageClassName: longhorn-retain
+  volumeName: vault-data-pv
