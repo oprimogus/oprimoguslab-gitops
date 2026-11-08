@@ -104,22 +104,6 @@ values: |
         enabled: true
         existingClaim: "prowlarr-config"
 
-    # jellyseerr:
-    #   image:
-    #     tag: "2.7.3"
-    #   ingress:
-    #     enabled: true
-    #     annotations:
-    #       kubernetes.io/ingress.class: traefik
-    #     hosts:
-    #       - host: jellyseerr.oprimoguslab.xyz
-    #         paths:
-    #           - path: /
-    #             pathType: Prefix
-    #   persistence:
-    #     enabled: true
-    #     existingClaim: "jellyseerr-config"
-
     seerr:
       enabled: true
       podSecurityContext:
@@ -168,6 +152,31 @@ values: |
       persistence:
         enabled: true
         existingClaim: "radarr-config"
+      additionalVolumes:
+        - name: media
+          persistentVolumeClaim:
+            claimName: nas-media-storage
+      additionalVolumeMounts:
+        - name: media
+          mountPath: /media
+
+    sonarr:
+      image:
+        repository: lscr.io/linuxserver/sonarr
+        pullPolicy: IfNotPresent
+        tag: "4.0.10"
+      ingress:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: traefik
+        hosts:
+          - host: sonarr.oprimoguslab.xyz
+            paths:
+              - path: /
+                pathType: Prefix
+      persistence:
+        enabled: true
+        existingClaim: "sonarr-config"
       additionalVolumes:
         - name: media
           persistentVolumeClaim:
