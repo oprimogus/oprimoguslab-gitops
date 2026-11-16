@@ -54,7 +54,7 @@ spec:
         - ReadWriteOnce
       resources:
         requests:
-          storage: 50Gi
+          storage: 80Gi
       storageClassName: longhorn-retain
       volumeName: cnpg-cluster-pv
 
