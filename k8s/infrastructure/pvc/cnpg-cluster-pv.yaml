@@ -4,7 +4,7 @@ metadata:
   name: cnpg-cluster-pv
 spec:
   capacity:
-    storage: 50Gi
+    storage: 80Gi
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
