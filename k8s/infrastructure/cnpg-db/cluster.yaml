@@ -10,13 +10,13 @@ spec:
     recovery:
       source: clusterBackup
 
-  externalClusters:
-    - name: clusterBackup
-      plugin:
-        name: barman-cloud.cloudnative-pg.io
-        parameters:
-          barmanObjectName: s3-store
-          serverName: postgres-cluster
+  # externalClusters:
+  #   - name: clusterBackup
+  #     plugin:
+  #       name: barman-cloud.cloudnative-pg.io
+  #       parameters:
+  #         barmanObjectName: s3-store
+  #         serverName: postgres-cluster
 
   plugins:
     - name: barman-cloud.cloudnative-pg.io
