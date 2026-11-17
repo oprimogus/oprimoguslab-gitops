@@ -22,8 +22,7 @@ spec:
     - name: barman-cloud.cloudnative-pg.io
       isWALArchiver: true
       parameters:
-        barmanObjectName: s3-store
-        serverName: postgres-cluster
+        barmanObjectName: s3-store-v2
 
   managed:
     roles:
