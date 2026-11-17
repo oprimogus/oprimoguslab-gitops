@@ -23,7 +23,7 @@ spec:
       isWALArchiver: true
       parameters:
         barmanObjectName: s3-store
-        serverName: postgres-cluster-v2
+        serverName: postgres-cluster
 
   managed:
     roles:
