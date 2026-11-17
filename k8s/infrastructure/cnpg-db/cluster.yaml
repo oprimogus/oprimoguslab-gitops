@@ -5,42 +5,54 @@ metadata:
   namespace: cnpg
 spec:
   instances: 1
-  # Users
-  managed:
-    roles:
-    - name: flyfood-api-prod
-      login: true
-      # Secret must be "type: kubernetes.io/basic-auth"
-      passwordSecret:
-        name: flyfood-api-prod-db
-    - name: flyfood-api-dev
-      login: true
-      passwordSecret:
-        name: flyfood-api-dev-db
-    - name: zitadel
-      login: true
-      createdb: true
-      createrole: true
-      passwordSecret:
-        name: zitadel-db
-    - name: intimai
-      login: true
-      createdb: true
-      createrole: true
-      passwordSecret:
-        name: intimai-db
-    - name: nextcloud
-      login: true
-      createdb: true
-      createrole: true
-      passwordSecret:
-        name: nextcloud-db
+
+  bootstrap:
+    recovery:
+      source: clusterBackup
+
+  externalClusters:
+    - name: clusterBackup
+      plugin:
+        name: barman-cloud.cloudnative-pg.io
+        parameters:
+          barmanObjectName: s3-store
+          serverName: postgres-cluster
 
   plugins:
     - name: barman-cloud.cloudnative-pg.io
       isWALArchiver: true
       parameters:
         barmanObjectName: s3-store
+        serverName: postgres-cluster-v2
+
+  managed:
+    roles:
+      - name: flyfood-api-prod
+        login: true
+        passwordSecret:
+          name: flyfood-api-prod-db
+      - name: flyfood-api-dev
+        login: true
+        passwordSecret:
+          name: flyfood-api-dev-db
+      - name: zitadel
+        login: true
+        createdb: true
+        createrole: true
+        passwordSecret:
+          name: zitadel-db
+      - name: intimai
+        login: true
+        createdb: true
+        createrole: true
+        passwordSecret:
+          name: intimai-db
+      - name: nextcloud
+        login: true
+        createdb: true
+        createrole: true
+        passwordSecret:
+          name: nextcloud-db
 
   certificates:
     serverTLSSecret: postgres-cluster-cert
@@ -56,7 +68,7 @@ spec:
         requests:
           storage: 80Gi
       storageClassName: longhorn-retain
-      volumeName: cnpg-cluster-pv
+      # volumeName: cnpg-cluster-pv
 
   postgresql:
     parameters:
